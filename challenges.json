@@ -13,5 +13,10 @@
         "name": "Tip Calculator App",
         "path": "./tip-calculator-app-main/index.html",
         "level": "junior"
+    },
+    {
+        "name": "Sunnyside Agency Landing Page",
+        "path": "./sunnyside-agency-landing-page-main/index.html",
+        "level": "junior"
     }
 ]
