@@ -1,0 +1,17 @@
+[
+    {
+        "name": "Order Summary Component",
+        "path": "./order-summary-component-main/index.html",
+        "level": "junior"
+    },
+    {
+        "name": "Blogr Landing Page",
+        "path": "./blogr-landing-page-main/index.html",
+        "level": "junior"
+    },
+    {
+        "name": "Tip Calculator App",
+        "path": "./tip-calculator-app-main/index.html",
+        "level": "junior"
+    }
+]

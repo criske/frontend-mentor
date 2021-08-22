@@ -1,0 +1,303 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Space Mono", monospace;
+    padding: 0;
+}
+
+:root {
+    --mobile-width: 375px;
+
+    --color-primary: hsl(172, 67%, 45%);
+    --very-dark-cyan: hsl(183, 100%, 15%);
+    --dark-grayish-cyan: hsl(186, 14%, 43%);
+    --dark-grayish-cyan2: hsl(184, 14%, 56%);
+    --light-grayish-cyan: hsl(185, 41%, 84%);
+    --light-grayish-cyan2: hsl(189, 41%, 97%);
+    --white: hsl(0, 0%, 100%);
+    --color-error: red;
+
+    --font-size-input: 24px;
+
+    --radius-big: 1rem;
+    --radius-medium: calc(var(--radius-big) / 2);
+    --radius-small: calc(var(--radius-medium) / 2);
+
+    --padding: 2rem;
+
+    --text-opacity: 0.7;
+    --text-small: 0.7rem;
+
+    --focus-border: 0 0 0.12rem var(--color-primary);
+    --focus-border-error: 0 0 0.12rem var(--color-error);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--light-grayish-cyan);
+}
+
+.text-small {
+    font-size: var(--text-small);
+    opacity: 0.7;
+}
+
+.splitter {
+    font-size: calc(var(--font-size-input) - 8px);
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    font-weight: 700;
+    color: var(--very-dark-cyan);
+    opacity: var(--text-opacity);
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 2rem;
+}
+
+.calculator {
+    width: 50%;
+    height: 55%;
+    background-color: var(--white);
+    padding: var(--padding);
+    border-radius: var(--radius-big);
+    display: flex;
+    gap: var(--padding);
+    -webkit-box-shadow: 0px 6px 19px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 6px 19px 4px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.calculator-pane-left {
+    flex: 1.25;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.input-section {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 0.3rem;
+}
+
+.input-section-title {
+    color: var(--very-dark-cyan);
+    font-weight: 700;
+    display: flex;
+    flex-wrap: true;
+    gap: 0.5rem;
+}
+
+.input-section-title > div:first-child {
+    min-width: 7rem;
+    display: flex;
+    align-items: center;
+}
+
+.input-section-error {
+    color: var(--color-error);
+    margin-left: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    opacity: var(--text-opacity);
+    display: none;
+}
+
+.input-section-control {
+    display: flex;
+    height: 2.8rem;
+    width: 100%;
+    background-color: var(--light-grayish-cyan2);
+    border-radius: var(--radius-small);
+    padding-right: 0.5rem;
+}
+
+.input-section-control:focus-within {
+    box-shadow: var(--focus-border);
+}
+
+.input-section-control-error {
+    box-shadow: var(--focus-border-error) !important;
+}
+
+input {
+    width: 85%;
+    outline: none;
+    border: none;
+    background-color: unset;
+    text-align: right;
+    color: var(--very-dark-cyan);
+    font-weight: 700;
+    font-size: var(--font-size-input);
+    caret-color: var(--very-dark-cyan);
+}
+
+/* Remove number spinner for Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/*  Remove number spinner for Firefox */
+.input-section-control > input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.input-section-control > i {
+    width: 15%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.input-section-control > i > img {
+    opacity: var(--text-opacity);
+    transform: scale(0.35);
+}
+
+.input-section-tips {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-flow: auto;
+    gap: 0.5rem;
+    justify-content: space-around;
+}
+
+.input-section-tips-btn {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 1rem;
+    font-weight: 700;
+    border-radius: var(--radius-small);
+    height: 2.5rem;
+    width: 100%;
+    background-color: var(--very-dark-cyan);
+    overflow: hidden;
+}
+
+.input-section-tips-btn-active {
+    background-color: var(--color-primary) !important;
+}
+
+.input-section-tips-btn-custom {
+    position: relative;
+    cursor: pointer;
+    background-color: var(--light-grayish-cyan);
+    color: var(--very-dark-cyan);
+}
+
+.input-section-tips-btn-custom:focus-within {
+    box-shadow: var(--focus-border);
+}
+
+.input-section-tips-btn-custom-front {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-section-tips-btn:hover {
+    background-color: var(--color-primary);
+}
+
+.calculator-pane-right {
+    flex: 1;
+    background-color: var(--very-dark-cyan);
+    border-radius: var(--radius-medium);
+    padding: var(--padding);
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+
+.display-section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 2;
+    color: var(--white);
+    height: 25%;
+}
+
+.display-section-title {
+    grid-column: 1;
+    grid-row: 1;
+    font-size: 0.9rem;
+    font-weight: 700;
+    align-self: flex-end;
+}
+
+.display-section-subtitle {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.display-section-value {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    font-weight: 700;
+    font-size: calc(var(--font-size-input) + 0.5rem);
+    color: var(--color-primary);
+    align-self: center;
+    justify-self: flex-end;
+}
+
+.display-reset {
+    display: flex;
+    background-color: var(--color-primary);
+    border-radius: var(--radius-small);
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: var(--very-dark-cyan);
+    font-weight: 700;
+    margin-top: auto;
+}
+
+.display-reset:disabled,
+.display-reset[disabled] {
+    background-color: rgb(13, 104, 109);
+}
+
+@media only screen and (max-width: 768px) {
+    .calculator {
+        width: 100%;
+        height: 100%;
+        padding: 0;
+        flex-direction: column;
+        gap: 0;
+    }
+    .calculator-pane-left {
+        padding: var(--padding);
+    }
+    .input-section-tips {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.attribution {
+    flex-grow: 1;
+    display: flex;
+    align-items: flex-end;
+}
+
+a {
+    text-decoration: none;
+}

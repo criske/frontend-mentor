@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="module" src="./js/app.js"></script>
+    <title>Frontend Mentor | Tip calculator app</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        .attribution {
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="splitter">
+        Spli<br>tter
+    </div>
+    <div class="calculator">
+        <div class="calculator-pane-left">
+            <div class="input-section">
+                <div class="input-section-title text-small">
+                    <div>Bill</div>
+                    <div id="bill-error" class="input-section-error">Must be a positive value</div>
+                </div>
+                <div class="input-section-control">
+                    <i><img src="./images/icon-dollar.svg"></i>
+                    <input id="bill" type="number" />
+                </div>
+            </div>
+            <div class="input-section">
+                <div class="input-section-title text-small">
+                    <div>Select tip %</div>
+                    <div id="tip-custom-input-error" class="input-section-error">Must be a positive value</div>
+                </div>
+                <div class="input-section-tips">
+                    <a href="#" id="tip-5" class="input-section-tips-btn">5%</a>
+                    <a href="#" id="tip-10" class="input-section-tips-btn">10%</a>
+                    <a href="#" id="tip-15" class="input-section-tips-btn">15%</a>
+                    <a href="#" id="tip-25" class="input-section-tips-btn">25%</a>
+                    <a href="#" id="tip-50" class="input-section-tips-btn">50%</a>
+                    <div class="input-section-tips-btn input-section-tips-btn-custom">
+                        <a id="tip-custom" class="input-section-tips-btn-custom-front">Custom</a>
+                        <input id="tip-custom-input" type="number" hidden/>
+                    </div>
+                </div>
+            </div>
+            <div class="input-section">
+                <div class="input-section-title text-small">
+                    <div>Number of people</div>
+                    <div id="people-error" class="input-section-error">Must be a positive value</div>
+                </div>
+                <div class="input-section-control">
+                    <i><img src="./images/icon-person.svg"></i>
+                    <input id="people" type="number" />
+                </div>
+            </div>
+        </div>
+        <div class="calculator-pane-right">
+            <div class="display-section">
+                <div class="display-section-title">Tip Amount</div>
+                <div class="display-section-subtitle text-small">/person</div>
+                <div id="tip-person" class="display-section-value">$0.00</div>
+            </div>
+            <div class="display-section">
+                <div class="display-section-title">Total</div>
+                <div class="display-section-subtitle text-small">/person</div>
+                <div id="total-person" class="display-section-value">$0.00</div>
+            </div>
+            <a id="reset" class="display-reset" href="#">Reset</a>
+        </div>
+    </div>
+    <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://github.com/criske">criske</a>.
+    </div>
+</body>
+
+</html>

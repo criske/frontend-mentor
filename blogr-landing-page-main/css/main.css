@@ -1,0 +1,56 @@
+:root {
+    /* primary colors */
+    --clr-light-red: hsl(356, 100%, 66%);
+    --clr-very-light-red: hsl(355, 100%, 74%);
+    --clr-dark-blue: hsl(208, 49%, 24%);
+
+    /* neutral colors*/
+    --clr-white:hsl(0, 0%, 100%);
+    --clr-grayish-blue: hsl(240, 2%, 79%);
+    --clr-very-dark-graysh-blue:  hsl(207, 13%, 34%);
+    --clr-dark-black-blue: hsl(240, 10%, 16%);
+}
+
+body {
+    max-width: 1440px;
+    background-color: var(--clr-white);
+    font-family: 'Overpass', sans-serif;
+    margin: 0;
+    font-size: 16px;
+}
+
+header {
+    height: 20rem;
+    position: relative;
+    border-radius: 0 0 0 3rem;
+    background-image: linear-gradient(to right,	hsl(8, 100%, 71%), hsl(353, 100%, 62%)), url('/images/bg-pattern-intro.svg');
+    padding-left: 10rem;
+}
+
+header > .back {
+    background-image: url('/images/bg-pattern-intro.svg');
+    background-size: 99%;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 170%;
+    background-position: -25rem 50%;
+}
+
+nav {
+    display: flex;
+}
+
+.menu > ul{
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+
+/* header::before {
+    position: absolute;
+    content: '';
+    background-image: url('/images/bg-pattern-intro.svg');
+    position: absolute;
+    height: 100%;
+    width: 100%;
+} */
