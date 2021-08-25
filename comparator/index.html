@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+        integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
     <script src="./app.js"></script>
     <title>Solution comparator</title>
@@ -14,7 +16,7 @@
 
 <body>
     <main class="main">
-        <a id="settings-btn" href="#">
+        <!-- <a id="settings-btn" href="#">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                 stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -22,17 +24,21 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
-        </a>
-        <a id="preview-slider-btn">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z" clip-rule="evenodd" />
-              </svg>
-        </a>
+        </a> -->
+        <div class="ui-widget-content">
+            <a id="preview-slider-btn">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zM7 9H5v2h2V9zm8 0h-2v2h2V9zM9 9h2v2H9V9z"
+                        clip-rule="evenodd" />
+                </svg>
+            </a>
+        </div>
         <div id="preview-pane">
-            <img id="preview-image" src="../tip-calculator-app-main/design/desktop-design-completed.jpg"></img>
+            <img id="preview-image" src="../sunnyside-agency-landing-page-main/design/desktop-design.jpg"></img>
         </div>
         <div id="solution-pane">
-            <iframe src="../tip-calculator-app-main/index.html"></iframe>
+            <iframe src="../sunnyside-agency-landing-page-main/index.html" frameBorder="0" scrolling="no"></iframe>
         </div>
     </main>
     <dialog id="dialog">

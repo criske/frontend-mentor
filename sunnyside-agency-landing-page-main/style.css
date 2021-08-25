@@ -45,10 +45,9 @@ body {
 .top-section {
     background-image: url('./images/desktop/image-header.jpg');
     background-size: contain;
-    background-position-x: center;
     background-repeat: no-repeat;
     background-color:  #3EBFFF;
-    height: 19%;
+    height: 4.71%;
 }
 
 .grid-section {
