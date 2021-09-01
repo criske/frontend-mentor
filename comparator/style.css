@@ -5,27 +5,27 @@
 * {
     margin: 0;
     box-sizing: border-box;
-    -webkit-user-select: none; /* Chrome/Safari */        
+    -webkit-user-select: none; /* Chrome/Safari */
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
 *::-webkit-scrollbar {
     display: none;
-  }
+}
 
 body {
-   display: flex;
-   align-items: center;
-   justify-content: center;
-
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 main {
     position: relative;
+    width: 1440px;
 }
 
 main > * {
@@ -41,7 +41,7 @@ main > * {
     width: 4rem;
 }
 
-.ui-widget-content{
+.ui-widget-content {
     position: fixed;
     z-index: 3;
     height: 100%;
@@ -49,14 +49,29 @@ main > * {
     width: 1440px;
 }
 
+@media screen and (max-width: 375px) {
+    .ui-widget-content {
+        width: 375px;
+    }
+
+    #preview-pane {
+        width: 375px;
+    }
+
+    main {
+        width: 375px;
+    }
+}
+
 #preview-slider-btn {
     --size: 4rem;
     position: absolute;
-    right: 16px;
+    left: 98%;
     height: var(--size);
     width: var(--size);
     /* transform: translateX(calc(var(--size) / 2 - 0.2rem)); */
     top: 50%;
+    display: none;
 }
 
 #preview-slider-btn > svg {
@@ -67,14 +82,20 @@ main > * {
     z-index: 2;
     top: 0;
     left: 0;
-    border-right: 0.5rem solid var(--slide-color);
+    /* border-right: 0.5rem solid var(--slide-color); */
     overflow: hidden;
+}
+
+#preview-image {
+    outline: 10px solid darkorange;
+    margin: 0;
 }
 
 #solution-pane {
     z-index: 1;
     top: 0;
     left: 0;
+    width: 1440px;
 }
 
 a {
@@ -82,7 +103,6 @@ a {
 }
 
 iframe {
-    min-width: 100%;
     min-height: 100%;
     /* pointer-events: none; */
 }
@@ -101,11 +121,28 @@ iframe {
     z-index: 1000;
     height: 1rem;
 
-    left: 4rem;
-    bottom: 4rem;
-    /* background-color: chartreuse; */
+    left: 2rem;
+    bottom: 2rem;
+}
+
+#preview-image-opacity-slider::before,
+#preview-image-opacity-slider::after {
+    position: absolute;
+    bottom: -100%;
+    font-weight: 600;
+    font-size: .8rem;
+}
+
+#preview-image-opacity-slider::before{
+    content: 'Sol.';
+    left: -15%;
+    
+}
+
+#preview-image-opacity-slider::after{
+    content: 'Dsgn.';
+    right: -10%;
 }
 
 img {
-    
 }
