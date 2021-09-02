@@ -1,17 +1,14 @@
 /*jshint esversion: 9 */
 
 export default async function (challenge) {
+    const safeChallenge = challenge || 'sunnyside-agency-landing-page-main';
     const challenges = await $.get("../challenges.json");
     var found;
-    if (!challenge) {
-        found = challenges[0].path;
-    } else {
-        challenges.forEach(ch => {
-            if (ch.path.includes(challenge)) {
-                found = ch;
-            }
-        });
-    }
+    challenges.forEach(ch => {
+        if (ch.path.includes(safeChallenge)) {
+            found = ch;
+        }
+    });
     if (!found) throw "Challenge not found";
     found = { ...found, path: found.path.replace('./', '../') };
     return found;

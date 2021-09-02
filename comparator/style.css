@@ -98,10 +98,6 @@ main > * {
     width: 1440px;
 }
 
-a {
-    cursor: pointer;
-}
-
 iframe {
     min-height: 100%;
     /* pointer-events: none; */
@@ -111,9 +107,8 @@ iframe {
     position: fixed;
     display: block;
     z-index: 999;
-    right: 4rem;
-    bottom: 4rem;
-    font-size: 2rem;
+    right: 2rem;
+    bottom: 1rem;
 }
 
 #preview-image-opacity-slider {
@@ -142,4 +137,19 @@ iframe {
 #preview-image-opacity-slider::after{
     content: 'Dsgn.';
     right: -10%;
+}
+
+svg {
+    stroke: lightgrey;
+    fill: none;
+    width: 3rem;
+    opacity: 0.5;
+}
+
+svg:hover {
+    opacity: 1;
+}
+
+a {
+    cursor: pointer;
 }
