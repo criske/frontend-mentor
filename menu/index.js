@@ -37,6 +37,7 @@ function runMenu() {
                 view.selected(selected);
                 $('#frontend-mentor-display').attr("src", selected.path);
                 $('#frontend-mentor-display-link').attr("href", selected.path);
+                $('#frontend-mentor-comparator-link').attr("href", `/comparator#${selected.path.replace('./','')}`);
                 break;
             }
         }

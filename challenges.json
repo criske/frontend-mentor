@@ -1,22 +1,52 @@
 [
     {
         "name": "Order Summary Component",
-        "path": "./order-summary-component-main/index.html",
+        "path": "./order-summary-component-main",
         "level": "junior"
     },
     {
         "name": "Blogr Landing Page",
-        "path": "./blogr-landing-page-main/index.html",
+        "path": "./blogr-landing-page-main",
         "level": "junior"
     },
     {
         "name": "Tip Calculator App",
-        "path": "./tip-calculator-app-main/index.html",
+        "path": "./tip-calculator-app-main",
         "level": "junior"
     },
     {
         "name": "Sunnyside Agency Landing Page",
-        "path": "./sunnyside-agency-landing-page-main/index.html",
+        "path": "./sunnyside-agency-landing-page-main",
+        "design": {
+            "path": "/design",
+            "desktop": {
+                "size" : {
+                    "width": 1440,
+                    "height": 4174
+                },
+                "states": [
+                    "/desktop-design.jpg",
+                    "/active-states.jpg"
+                ]
+            },
+            "mobile": {
+                "size" : {
+                    "width": 375,
+                    "height": 5219
+                },
+                "states": [
+                    "/mobile-design.jpg",
+                    {
+                        "path" : "/mobile.menu.jpg",
+                        "size" : {
+                            "height" : 850
+                        }
+                    }
+                    
+                ]
+            }
+
+        },
         "level": "junior"
     }
 ]

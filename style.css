@@ -81,7 +81,8 @@ iframe {
     font-size: 0.85rem;
 }
 
-#frontend-mentor-display-link {
+.challenge-links {
+    display: flex;
     position: absolute;
     bottom: 2rem;
     right: 2rem;

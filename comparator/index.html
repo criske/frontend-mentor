@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
         integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="./app.js"></script>
+    <script type="module" src="./app.js"></script>
     <title>Solution comparator</title>
 </head>
 
@@ -26,12 +26,12 @@
             </a>
         </div>
         <div id="preview-pane">
-            <img id="preview-image" src="../sunnyside-agency-landing-page-main/design/desktop-design.jpg"></img>
+            <img id="preview-image"></img>
         </div>
         <div id="solution-pane">
-            <iframe src="../sunnyside-agency-landing-page-main/index.html" frameBorder="0" scrolling="no"></iframe>
+            <iframe frameBorder="0" scrolling="no"></iframe>
         </div>
-        <a class="solution-link" href="../sunnyside-agency-landing-page-main/index.html" target="_blank">
+        <a class="solution-link" target="_blank">
             Open
         </a>
         <input type="range" min="0" max="100" value="50" class="slider" id="preview-image-opacity-slider">
