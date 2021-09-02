@@ -50,6 +50,7 @@ $(document).ready(() => {
     $("#preview-image").one("load", function() {
         console.log("Image w:" + $('#preview-image').width());
         $('#solution-pane').height($('#preview-image').height());
+        $('iframe').height($('#preview-image').height());
         // $('#solution-pane').width($('#preview-image').width());
         // $('#preview-pane').width($('#preview-image').width());
         // // $('iframe').width($('#preview-image').width());
@@ -73,9 +74,12 @@ $(document).ready(() => {
         if($(window).width() <= 375){
             $('#preview-image').attr('src', `../sunnyside-agency-landing-page-main/design/mobile-design.jpg?r=${seed}`);
             $('iframe').width(375);
+            $('iframe').height(5219);
+           
         }else{
             $('#preview-image').attr('src', `../sunnyside-agency-landing-page-main/design/desktop-design.jpg?r=${seed}`);
             $('iframe').width(1440);
+            $('iframe').height(4174);
         }
     });
 });
