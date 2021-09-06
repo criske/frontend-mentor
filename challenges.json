@@ -48,5 +48,36 @@
 
         },
         "level": "junior"
+    },
+    {
+        "name": "Calculator app",
+        "path": "./calculator-app-main",
+        "design": {
+            "path": "/design",
+            "desktop": {
+                "size" : {
+                    "width": 1440,
+                    "height": 900
+                },
+                "states": [
+                    "/desktop-design-theme-1.jpg",
+                    "/desktop-design-theme-2.jpg",
+                    "/desktop-design-theme-3.jpg"
+                ]
+            },
+            "mobile": {
+                "size" : {
+                    "width": 375,
+                    "height": 667
+                },
+                "states": [
+                    "/mobile-design-theme-1.jpg",
+                    "/mobile-design-theme-2.jpg",
+                    "/mobile-design-theme-3.jpg"
+                ]
+            }
+
+        },
+        "level": "intermediate"
     }
 ]
