@@ -1,26 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Calculator app</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" src="./js/app.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Spartan:wght@700&display=swap" rel="stylesheet">
+
+    <title>Frontend Mentor | Calculator app</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        .attribution {
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+    </style>
 </head>
+
 <body>
 
+    <div class="container">
+        <div class="top">
+            <h1 class="title">calc</h1>
+            <div id="theme-loader">
+                <div class="radio-input">
+                    <label for="theme-1">1</label>
+                    <input type="radio" name="theme" id="theme-1" value="1" checked>
+                </div>
+                <div class="radio-input">
+                    <label for="theme-2">2</label>
+                    <input type="radio" name="theme" id="theme-2" value="2">
+                </div>
+                <div class="radio-input">
+                    <label for="theme-2">3</label>
+                    <input type="radio" name="theme" id="theme-3" value="3">
+                </div>
+            </div>
+        </div>
+        <div class="display">
+            <input type="number" id="display-input" value="399.981">
+        </div>
+        <div class="keyboard">
+            <a href="#">7</a>
+            <a href="#">8</a>
+            <a href="#">9</a>
+            <a href="#" class="key-special">DEL</a>
 
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
+            <a href="#">4</a>
+            <a href="#">5</a>
+            <a href="#">6</a>
+            <a href="#">+</a>
+            <a href="#">1</a>
+            <a href="#">2</a>
+            <a href="#">3</a>
+            <a href="#">-</a>
+            <a href="#">.</a>
+            <a href="#">0</a>
+            <a href="#">/</a>
+            <a href="#">x</a>
+
+            <a href="#" id="reset" class="key-special key-long">RESET</a>
+            <a href="#" id="equal" class="key-special key-long">=</a>
+        </div>
+    </div>
+
+    <!-- <span id="theme-loader" style="position: absolute; top: 0; left: 0;">
+        <input type="radio" name="theme" id="theme-1" checked>
+        <input type="radio" name="theme" id="theme-2">
+        <input type="radio" name="theme" id="theme-3">
+    </span> -->
+
+
+    <div class="attribution">
+        Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
+        Coded by <a href="https://github.com/criske" target="_blank">criske</a>.
+    </div>
 </body>
+
 </html>

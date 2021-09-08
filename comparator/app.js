@@ -7,6 +7,8 @@ $(document).ready(async () => {
     const challenge = await challengeLoader(inputPath);
 
     $('iframe').attr('src', challenge.path);
+    $('.solution-link').attr('src', challenge.path);
+    
     setPreviewAndSolutionData(challenge, $(window).width());
 
     $('#settings-btn').click(() => {

@@ -1,0 +1,242 @@
+*,
+*:before,
+*:after {
+    box-sizing: border-box;
+}
+
+:root {
+    --main-background: hsl(222, 26%, 31%);
+    --screen-background: hsl(224, 36%, 15%);
+
+    --keypad-background: rgb(37, 45, 68);
+
+    --key-color: hsl(225, 21%, 49%);
+    --key-background: rgb(234, 227, 219);
+    --key-shadow: hsl(28, 16%, 65%);
+    --key-box-shadow: 0 0.25rem 0 0 var(--key-shadow);
+
+    --key-color-special: "white";
+    --key-background-special: hsl(225, 21%, 49%);
+    --key-shadow-special: hsl(224, 28%, 35%);
+    --key-box-shadow-special: 0 0.25rem 0 0 var(--key-shadow-special);
+
+    --key-color-special-eq: "white";
+    --key-background-special-eq: hsl(6, 63%, 50%);
+    --key-shadow-special-eq: hsl(6, 70%, 34%);
+    --key-box-shadow-special-eq: 0 0.25rem 0 0 var(--key-shadow-special-eq);
+
+    --text-color: white;
+
+    --radius-card: 0.6rem;
+
+    --font-family: "Spartan", sans-serif;
+}
+
+body {
+    height: 900px;
+    width: 1440px;
+    background-color: var(--main-background);
+    margin: 0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family);
+}
+
+.container {
+    width: 200px;
+    height: 300px;
+    height: 79%;
+    width: 37.5%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* TITLE & THEME SECTION*/
+.top {
+    height: 6.5%;
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+}
+
+.title {
+    margin-right: auto;
+}
+
+#theme-loader {
+    background-color: var(--keypad-background);
+    align-self: flex-end;
+    border-radius: 1rem;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    height: 55%;
+    width: 4.5rem;
+    position: relative;
+}
+
+#theme-loader::before {
+    position: absolute;
+    left: -100%;
+    bottom: 20%;
+    content: "theme";
+    text-transform: uppercase;
+    font-size: 0.8rem;
+}
+
+.radio-input {
+    display: inline;
+    position: relative;
+}
+.radio-input input[type="radio"] {
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-clip: content-box;
+    margin: 0;
+    padding: 0;
+}
+.radio-input input[type="radio"]:checked {
+    background-color: var(--key-background-special-eq);
+}
+.radio-input label {
+    position: absolute;
+    top: -112%;
+    left: 29%;
+    font-size: 0.8rem;
+}
+
+/* DISPLAY SECTION */
+
+.display {
+    height: 18%;
+    background-color: var(--screen-background);
+    margin-top: 2rem;
+    margin-bottom: 1.5rem;
+    border-radius: var(--radius-card);
+    display: flex;
+    align-items: center;
+}
+
+#display-input {
+    -moz-appearance: textfield;
+    width: 100%;
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: right;
+    margin-right: 2rem;
+    font-family: inherit;
+    background: none;
+    color: var(--text-color);
+    padding: 0;
+    border: 0;
+}
+
+#display-input:focus {
+    outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+#display-input::-webkit-outer-spin-button,
+#display-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* KEBOARD SECTION */
+
+.keyboard {
+    background-color: var(--keypad-background);
+    border-radius: var(--radius-card);
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 1.4rem;
+    padding: 2rem;
+}
+
+.keyboard > a {
+    text-decoration: none;
+    padding-top: 0.3rem;
+    background-color: var(--key-background);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.5rem;
+    color: var(--key-color);
+    font-weight: 900;
+    font-size: 1.9rem;
+    -webkit-box-shadow: var(--key-box-shadow);
+    box-shadow: var(--key-box-shadow);
+}
+
+.keyboard > a:active {
+    box-shadow: unset !important;
+    transform: scale(0.98, 0.98);
+}
+
+.key-special {
+    color: var(--key-color-special) !important;
+    background-color: var(--key-background-special) !important;
+    -webkit-box-shadow: var(--key-box-shadow-special) !important;
+    box-shadow: var(--key-box-shadow-special) !important;
+    font-size: 1rem !important;
+}
+
+#equal {
+    color: var(--key-color-special-eq) !important;
+    -webkit-box-shadow: var(--key-box-shadow-special-eq) !important;
+    box-shadow: var(--key-box-shadow-special-eq) !important;
+    background-color: var(--key-background-special-eq) !important;
+}
+
+.key-long {
+    grid-column: span 2;
+}
+
+/* FOOTER SECTION */
+.attribution {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    color: var(--text-color);
+    opacity: .7;
+}
+.attribution,
+.attribution a:link,
+.attribution a:visited{
+    color: var(--text-color);
+}
+
+@media (max-width: 375px) {
+    body {
+        width: 375px;
+        height: 668px;
+    }
+    .container {
+        width: 87%;
+        height: 92%;
+    }
+    .top {
+        height: 7.5%;
+    }
+    .display {
+        height: 14%;
+    }
+    #display-input {
+        font-size: 2rem;
+        margin-right: 1.3rem;
+    }
+    .keyboard {
+        gap: 0.8rem;
+        padding: 1.6rem;
+    }
+    .attribution{
+        bottom: 0;
+        font-size: .6rem;
+    }
+}
