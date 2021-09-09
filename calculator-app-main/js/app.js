@@ -1,10 +1,12 @@
 /*jshint esversion: 9 */
 import themeLoader from './theme-loader.mjs';
+import Calculator from './calculator.mjs';
 
 $(document).ready(ready);
 
 function ready() {
     handleTheme();
+    handleCalculator();
 }
 
 function handleTheme() {
@@ -18,3 +20,18 @@ function handleTheme() {
         themeLoader(this.id);
     });
 }
+
+function handleCalculator() {
+    const calculator = new Calculator();
+    const display = $('#display-input');
+    $('#keyboard a').click(function(){
+        const key = $(this);
+        const index = key.index();
+        calculator.op(index, key.text());
+    });
+    calculator.setListener((state) => {
+        display.val(state);
+    });
+}
+
+

@@ -125,6 +125,7 @@ body {
     -moz-appearance: textfield;
     width: 100%;
     font-size: 3rem;
+    text-size-adjust: auto;
     font-weight: bold;
     text-align: right;
     margin-right: 2rem;
@@ -133,6 +134,7 @@ body {
     color: var(--text-color);
     padding: 0;
     border: 0;
+    pointer-events: none;
 }
 
 #display-input:focus {
