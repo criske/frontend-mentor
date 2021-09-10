@@ -25,12 +25,14 @@ function handleCalculator() {
     const calculator = new Calculator();
     const display = $('#display-input');
     $('#keyboard a').click(function(){
-        const key = $(this);
-        const index = key.index();
-        calculator.op(index, key.text());
+        calculator.op($(this).text());
+
     });
     calculator.setListener((state) => {
-        display.val(state);
+        display.fadeOut(100, () => {
+            display.val(state);
+            display.fadeIn(100);
+        });
     });
 }
 

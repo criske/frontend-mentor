@@ -4,7 +4,7 @@ export default class Calculator {
         value: '0',
         prevValue: '0',
         hasInputStarted: false,
-        currentMathOp: -1,
+        currentMathOp: '',
         hasMathOpStarted: false
     };
 
@@ -24,33 +24,33 @@ export default class Calculator {
         return this.#listener;
     }
 
-    op(type, value) {
-        switch (type) {
-            case 3: {
+    op(key) {
+        switch (key) {
+            case 'DEL': {
                 this.#opDel();
                 break;
             }
-            case 7:
-            case 11:
-            case 14:
-            case 15: {
-                this.#opMath(type);
+            case '+':
+            case '-':
+            case 'x':
+            case '/': {
+                this.#opMath(key);
                 break;
             }
-            case 16: {
+            case 'RESET': {
                 this.#opReset();
                 break;
             }
-            case 17: {
+            case '=': {
                 this.#opEq();
                 break;
             }
-            case 12: {
+            case '.': {
                 this.#opDecimal();
                 break;
             }
             default: {
-                this.#opInput(value);
+                this.#opInput(key);
             }
         }
     }
@@ -75,13 +75,13 @@ export default class Calculator {
     }
 
     #opMath(type) {
-        const prevValue = this.#state.hasMathOpStarted && this.state.hasInputStarted
+        const prevValue = this.#state.hasMathOpStarted && this.#state.hasInputStarted
             ? this.#calculate().toString()
             : this.#state.value;
         this.#state = {
             ...this.#state,
             value: prevValue,
-            prevValue: this.#state.value,
+            prevValue: prevValue,
             currentMathOp: type,
             hasInputStarted: false,
             hasMathOpStarted: true
@@ -119,15 +119,17 @@ export default class Calculator {
     }
 
     #opEq() {
-        const next = this.#calculate();
-        this.#state = {
-            ...this.#state,
-            prevValue: this.#state.value,
-            value: next.toString(),
-            hasInputStarted: false,
-            hasMathOpStarted: false
+        if (this.#state.hasMathOpStarted) {
+            const next = this.#calculate();
+            this.#state = {
+                ...this.#state,
+                prevValue: this.#state.value,
+                value: next.toString(),
+                hasInputStarted: false,
+                hasMathOpStarted: false
+            }
+            this.#notify();
         }
-        this.#notify();
     }
 
     #calculate() {
@@ -135,19 +137,19 @@ export default class Calculator {
         const value = this.#convertToNum(this.#state.value);
         let next;
         switch (this.#state.currentMathOp) {
-            case 7: {
+            case '+': {
                 next = prevValue + value;
                 break;
             }
-            case 11: {
+            case '-': {
                 next = prevValue - value;
                 break;
             }
-            case 14: {
+            case '/': {
                 next = value > 0.0 ? prevValue / value : 0;
                 break;
             }
-            case 15: {
+            case 'x': {
                 next = prevValue * value;
                 break;
             }
