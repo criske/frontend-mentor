@@ -17,11 +17,12 @@ function runMenu() {
                 break;
             }
             case Actions.LOADING: {
-                console.log("Loading " + data);
                 break;
             }
         }
     });
+    view.expand();
+
     state.setListener((action, state) => {
         switch (action) {
             case Actions.TOGGLE: {
@@ -38,6 +39,15 @@ function runMenu() {
                 $('#frontend-mentor-display').attr("src", selected.path);
                 $('#frontend-mentor-display-link').attr("href", selected.path);
                 $('#frontend-mentor-comparator-link').attr("href", `/comparator#${selected.path.replace('./','')}`);
+                if(selected.solution) {
+                    $('.challenge-links > a').attr("href", selected.solution);
+                    $('.challenge-links > a').attr('target','_blank');
+                    $('.challenge-links > a').text("completed");
+                }else{
+                    $('.challenge-links > a').attr("href", "#");
+                    $('.challenge-links > a').text("in-progress");
+                    $('.challenge-links > a').attr('target','_self');
+                }
                 break;
             }
         }

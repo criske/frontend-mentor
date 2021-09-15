@@ -4,7 +4,7 @@ import Actions from './actions.mjs';
 export default class State {
 
     #state = {
-        expanded: false,
+        expanded: true,
         selected: -1,
         entries: []
     };

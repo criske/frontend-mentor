@@ -2,7 +2,8 @@
     {
         "name": "Order Summary Component",
         "path": "./order-summary-component-main",
-        "level": "junior"
+        "level": "newbie",
+        "solution": "https://www.frontendmentor.io/solutions/solution-completed-using-vanilla-css-DsXlEZUcE"
     },
     {
         "name": "Blogr Landing Page",
@@ -12,7 +13,8 @@
     {
         "name": "Tip Calculator App",
         "path": "./tip-calculator-app-main",
-        "level": "junior"
+        "level": "junior",
+        "solution": "https://www.frontendmentor.io/solutions/solution-completed-using-vanilla-css-and-jquery-for-the-js-part-1CE2-LOUW"
     },
     {
         "name": "Sunnyside Agency Landing Page",
@@ -78,6 +80,7 @@
             }
 
         },
-        "level": "intermediate"
+        "level": "intermediate",
+        "solution": "https://www.frontendmentor.io/solutions/jquery-and-mochachaijs-for-unit-tests-calculator-logic-KoTAlAAuA"
     }
 ]

@@ -42,7 +42,36 @@ export default class View {
         this.#enqueueOrExecute(() => {
             $('#menu_container_list > div').remove();
             entries.forEach(entry => {
-                var rendered = Mustache.render(this.#menuEntryTemplate, { name: entry.name });
+                var level = entry.level.toUpperCase().charAt(0);
+                var levelColor = "#F48925";
+                switch(level){
+                    case "A" : {
+                        levelColor = "#F48925";
+                        break;
+                    }
+                    case "G" : {
+                        levelColor = "#EB5252";
+                        break;
+                    }
+                    case "I" : {
+                        levelColor = "#F1B604";
+                        break;
+                    }
+                    case "J" : {
+                        levelColor = "#aad742";
+                        break;
+                    }
+                    case "N" : {
+                        levelColor = "#14C2C8";
+                        break;
+                    }
+                }
+
+                var rendered = Mustache.render(this.#menuEntryTemplate, { 
+                    name: entry.name,
+                    level: level,
+                    levelColor: levelColor
+                });
                 $('#menu_container_list').append(rendered);
             });
            
