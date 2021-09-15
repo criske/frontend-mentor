@@ -82,5 +82,33 @@
         },
         "level": "intermediate",
         "solution": "https://www.frontendmentor.io/solutions/jquery-and-mochachaijs-for-unit-tests-calculator-logic-KoTAlAAuA"
+    },
+    {
+        "name": "Time Tracking Dashboard",
+        "path": "./time-tracking-dashboard-main",
+        "design": {
+            "path": "/design",
+            "desktop": {
+                "size" : {
+                    "width": 1440,
+                    "height": 1024
+                },
+                "states": [
+                    "/desktop-design.jpg",
+                    "/active-states.jpg"
+                ]
+            },
+            "mobile": {
+                "size" : {
+                    "width": 375,
+                    "height": 1469
+                },
+                "states": [
+                    "/mobile-design.jpg"
+                ]
+            }
+
+        },
+        "level": "junior"
     }
 ]
