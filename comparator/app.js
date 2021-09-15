@@ -43,15 +43,15 @@ $(document).ready(async () => {
     // });
 
     $("#preview-image").one("load", function() {
-        console.log("Image w:" + $('#preview-image').width());
+        console.log("Image w:" + $('#preview-image').width() + " " + $('#preview-image').height());
         $('#solution-pane').height($('#preview-image').height());
-        $('iframe').height($('#preview-image').height());
         // $('#solution-pane').width($('#preview-image').width());
         // $('#preview-pane').width($('#preview-image').width());
         // // $('iframe').width($('#preview-image').width());
         // // $('.ui-widget-content').width($('#preview-image').width());
         // $('main').width($('#preview-image').width());
         // $('main').height($('#preview-image').height());
+        setPreviewAndSolutionData(challenge, $(window).width());
         $('#preview-image').attr("style", "opacity:0.5; -moz-opacity:0.5; filter:alpha(opacity=50)");
         $("#preview-slider-btn").css({top: '50%', left: '90%'});
       }).each(function() {
@@ -71,17 +71,18 @@ $(document).ready(async () => {
 
 function setPreviewAndSolutionData(challenge, width){
     const seed = Math.random();
+    console.log("Image w:" + $('#preview-image').width() + " " + $('#preview-image').height());
     if(width <= challenge.design.mobile.size.width){
         //$('#preview-image').attr('src', `../sunnyside-agency-landing-page-main/design/mobile-design.jpg?r=${seed}`);
         $('#preview-image').attr('src', `${challenge.path}${challenge.design.path}${challenge.design.mobile.states[0]}?r=${seed}`);
         
-        $('iframe').width(375);
-        $('iframe').height(5219);
+        $('iframe').width($('#preview-image').width());
+        $('iframe').height($('#preview-image').height());
        
     }else{
         // $('#preview-image').attr('src', `../sunnyside-agency-landing-page-main/design/desktop-design.jpg?r=${seed}`);
         $('#preview-image').attr('src', `${challenge.path}${challenge.design.path}${challenge.design.desktop.states[0]}?r=${seed}`);
-        $('iframe').width(1440);
-        $('iframe').height(4174);
+        $('iframe').width($('#preview-image').width());
+        $('iframe').height($('#preview-image').height());
     }
 }

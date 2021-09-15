@@ -1,0 +1,306 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --clr-blue: hsl(246, 80%, 60%);
+    --clr-lighter-red: hsl(15, 100%, 70%);
+    --clr-soft-blue: hsl(195, 74%, 62%);
+    --clr-light-red: hsl(348, 100%, 68%);
+    --clr-lime-green: hsl(145, 58%, 55%);
+    --clr-violet: hsl(264, 64%, 52%);
+    --clr-soft-orange: hsl(43, 84%, 65%);
+    --clr-very-dark-blue: hsl(226, 43%, 10%);
+    --clr-dark-blue: hsl(235, 46%, 20%);
+    --clr-desaturated-blue: hsl(235, 45%, 61%);
+    --clr-pale-blue: hsl(236, 100%, 87%);
+
+    --font-family: "Rubik", sans-serif;
+    --font-title-size: 18px;
+}
+
+
+h1,
+h4 {
+    margin: 0;
+    font-weight: 300;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    position: relative;
+    font-family: var(--font-family);
+    background-color: var(--clr-very-dark-blue);
+    height: 1024px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section {
+    height: 52%;
+    width: 78%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: 2;
+    gap: 2rem;
+    padding-bottom: 1rem;
+}
+
+article:first-child {
+    grid-row: 1 / span 2;
+    height: 100%;
+}
+
+article {
+    color: white;
+}
+
+article {
+    height: 15rem;
+}
+
+.card {
+    --radius: 1rem;
+    --padding-left: 1.7rem;
+    border-radius: var(--radius);
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 90% -5%;
+    overflow: hidden;
+}
+
+/* CARDS BACKGROUND AND IMAGES */
+article:nth-child(1) > .card {
+    background-color: var(--clr-dark-blue);
+}
+article:nth-child(2) > .card {
+    background-color: var(--clr-lighter-red);
+    background-image: url("./images/icon-work.svg");
+}
+article:nth-child(3) > .card {
+    background-color: var(--clr-soft-blue);
+    background-image: url("./images/icon-play.svg");
+}
+article:nth-child(4) > .card {
+    background-color: var(--clr-light-red);
+    background-image: url("./images/icon-study.svg");
+}
+article:nth-child(5) > .card {
+    background-color: var(--clr-lime-green);
+    background-image: url("./images/icon-exercise.svg");
+}
+article:nth-child(6) > .card {
+    background-color: var(--clr-violet);
+    background-image: url("./images/icon-social.svg");
+}
+article:nth-child(7) > .card {
+    background-color: var(--clr-soft-orange);
+    background-image: url("./images/icon-self-care.svg");
+}
+
+/* BIG CARD USER REPORT */
+.report {
+    border-radius: var(--radius);
+    background-color: var(--clr-blue);
+    height: 68%;
+    padding-left: var(--padding-left);
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-rows: 40%  10%  50% ;
+}
+
+.report > img {
+    width: 5.2rem;
+    border: 0.2rem solid white;
+    object-fit: cover;
+    border-radius: 50%;
+    align-self: center;
+}
+
+.report > h4 {
+    opacity: 0.5;
+    align-self: flex-end;
+}
+
+.report > h1 {
+    font-size: 2.5rem;
+}
+
+.report-filter {
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+    width: 100%;
+    min-height: 0;
+    padding-left: var(--padding-left);
+    justify-content: space-evenly;
+}
+
+.report-filter > a {
+    color: white;
+    text-transform: capitalize;
+    opacity: .5;
+    font-size: 1.1rem;
+}
+
+.report-filter > a.active {
+    opacity: 1;
+}
+
+.report-filter > a:hover,
+.report-filter > a:active{
+    opacity: 1;
+}
+
+/* SMALL CARDS BODY */
+.card-body {
+    border-radius: var(--radius);
+    background-color: var(--clr-dark-blue);
+    height: 82%;
+    overflow: hidden;
+    margin-top: 2.8rem;
+    display: grid;
+    grid-template-columns: 77% 23%;
+    grid-template-rows: repeat(4, 25%);
+    padding-left: var(--padding-left);
+    text-transform: capitalize;
+}
+
+.card-title {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: flex-end;
+    font-size: var(--font-title-size);
+    font-weight: 500;
+}
+
+.card-options {
+    grid-column: 2;
+    align-self: flex-end;
+    width: 1.3rem;
+    height: 1rem;
+    text-decoration: none;
+    background-image: url("./images/icon-ellipsis.svg");
+    background-repeat: no-repeat;
+}
+
+.card-hours {
+    grid-column: 1;
+    grid-row: 2 / span 2;
+    align-self: center;
+    font-size: 3.5rem;
+    font-weight: 300;
+    margin-top: 1rem;
+}
+
+.card-previous {
+    grid-column: 1;
+    grid-row: 4;
+    font-weight: 400;
+    opacity: 0.6;
+    font-size: 0.95rem;
+}
+
+@media (max-width: 375px) {
+    body {
+        height: 1469px;
+    }
+    section {
+        height: 98%;
+        width: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        padding-top: 16%;
+        padding-bottom: 15%;
+        gap: unset;
+    }
+    article:first-child {
+        grid-row: unset;
+        height: 12.8rem;
+    }
+
+    article:not(:first-child) {
+        height: 10rem;
+    }
+
+    article {
+        width: 100%;
+        height: 10rem;
+        padding: 0 0.9rem !important;
+    }
+
+    .card-body {
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 50% 50%;
+        padding-right: 1.5rem;
+        padding-bottom: 1rem;
+        margin-top: 2.5rem;
+    }
+
+    .card-title {
+        margin-bottom: 0.7rem;
+    }
+
+    .card-hours {
+        grid-row: 2;
+        grid-column: 1;
+        font-size: 2rem;
+        margin-top: unset;
+        align-self: flex-start;
+    }
+
+    .card-previous {
+        margin-top: 0.6rem;
+        grid-row: 2;
+        grid-column: 2;
+        align-self: flex-start;
+        justify-self: flex-end;
+    }
+
+    .card-options {
+        justify-self: flex-end;
+        margin-bottom: 0.7rem;
+    }
+
+    .report {
+        grid-template-columns: 30% 70%;
+        grid-auto-rows: 50% 50%;
+        height: 65%;
+    }
+
+    .report > img {
+        width: 4.5rem;
+        grid-row: 1 / span 2;
+    }
+
+    .report > h1 {
+        font-size: 1.6rem;
+    }
+
+    .report-filter {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 1.2rem;
+    }
+}
+
+/* FOOTER SECTION */
+.attribution {
+    position: absolute;
+    bottom: 5%;
+    width: 100%;
+    color: var(--clr-soft-orange);
+    opacity: 0.7;
+}
+.attribution,
+.attribution a:link,
+.attribution a:visited {
+    color: var(--clr-soft-orange);
+}
