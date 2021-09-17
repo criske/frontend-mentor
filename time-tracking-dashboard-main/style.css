@@ -72,7 +72,7 @@ article {
     height: 100%;
     background-repeat: no-repeat;
     background-position: 90% -5%;
-    overflow: hidden;
+    position: relative;
 }
 
 /* CARDS BACKGROUND AND IMAGES */
@@ -160,11 +160,13 @@ article:nth-child(7) > .card {
 
 /* SMALL CARDS BODY */
 .card-body {
+    position: absolute;
     border-radius: var(--radius);
     background-color: var(--clr-dark-blue);
     height: 82%;
+    width: 100%;
     overflow: hidden;
-    margin-top: 2.8rem;
+    top: 2.8rem;
     display: grid;
     grid-template-columns: 77% 23%;
     grid-template-rows: repeat(4, 25%);
