@@ -22,7 +22,7 @@
         "design": {
             "path": "/design",
             "desktop": {
-                "size" : {
+                "size": {
                     "width": 1440,
                     "height": 4174
                 },
@@ -32,22 +32,20 @@
                 ]
             },
             "mobile": {
-                "size" : {
+                "size": {
                     "width": 375,
                     "height": 5219
                 },
                 "states": [
                     "/mobile-design.jpg",
                     {
-                        "path" : "/mobile.menu.jpg",
-                        "size" : {
-                            "height" : 850
+                        "path": "/mobile.menu.jpg",
+                        "size": {
+                            "height": 850
                         }
                     }
-                    
                 ]
             }
-
         },
         "level": "junior"
     },
@@ -57,7 +55,7 @@
         "design": {
             "path": "/design",
             "desktop": {
-                "size" : {
+                "size": {
                     "width": 1440,
                     "height": 900
                 },
@@ -68,7 +66,7 @@
                 ]
             },
             "mobile": {
-                "size" : {
+                "size": {
                     "width": 375,
                     "height": 667
                 },
@@ -78,7 +76,6 @@
                     "/mobile-design-theme-3.jpg"
                 ]
             }
-
         },
         "level": "intermediate",
         "solution": "https://www.frontendmentor.io/solutions/jquery-and-mochachaijs-for-unit-tests-calculator-logic-KoTAlAAuA"
@@ -89,7 +86,7 @@
         "design": {
             "path": "/design",
             "desktop": {
-                "size" : {
+                "size": {
                     "width": 1440,
                     "height": 1024
                 },
@@ -99,7 +96,7 @@
                 ]
             },
             "mobile": {
-                "size" : {
+                "size": {
                     "width": 375,
                     "height": 1469
                 },
@@ -107,9 +104,40 @@
                     "/mobile-design.jpg"
                 ]
             }
-
         },
         "level": "junior",
         "solution": "https://www.frontendmentor.io/solutions/plain-css-eWWFaCcbl"
+    },
+    {
+        "name": "Rest Countries API",
+        "path": "./rest-countries-api-with-color-theme-switcher-master",
+        "design": {
+            "path": "/design",
+            "desktop": {
+                "size": {
+                    "width": 1440,
+                    "height": 1024
+                },
+                "states": [
+                    "/desktop-design-home-dark.jpg",
+                    "/desktop-design-home-light",
+                    "/desktop-design-detail-dark.jpg",
+                    "/desktop-design-detail-light.jpg"
+                ]
+            },
+            "mobile": {
+                "size": {
+                    "width": 375,
+                    "height": 6610
+                },
+                "states": [
+                    "/mobile-design-home-dark.jpg",
+                    "/mobile-design-home-light",
+                    "/mobile-design-detail-dark.jpg",
+                    "/mobile-design-detail-light.jpg"
+                ]
+            }
+        },
+        "level": "intermediate"
     }
 ]
