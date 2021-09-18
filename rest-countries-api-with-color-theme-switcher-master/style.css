@@ -1,0 +1,19 @@
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+:root {
+    --clr-background: hsl(0, 0%, 98%);
+    --clr-background-elements: hsl(209, 23%, 22%);
+}
+
+body {
+    background-color: var(--clr-background);
+    font-family: 'Nunito Sans', sans-serif;
+    width: 1440;
+    height: 1024;
+    position: relative;
+}

@@ -1,0 +1,23 @@
+a {
+    background-color: var(--clr-background-elements);
+    color: var(--clr-text);
+    display: inline-block;
+    max-width: 8rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    gap: .2rem;
+    text-transform: capitalize;
+}
+
+i {
+    font-style: normal;
+    font-weight: 600;
+}
+
+a svg {
+    width: 1rem;
+    height: 1rem;
+}
