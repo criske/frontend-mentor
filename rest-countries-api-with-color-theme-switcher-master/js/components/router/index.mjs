@@ -1,18 +1,34 @@
 /*jshint esversion: 9 */
 
-export default class Router extends HTMLElement{
+import RouteEvent from "./route-event.mjs";
+
+export default class Router extends HTMLElement {
 
     static get observedAttributes() { return ['initialPage']; }
 
-    constructor(){
+    #zIndex = 0;
+
+    #popStateListener = (e) => {
+        if (e.state) {
+            if (this.#zIndex < e.state.zIndex) {
+                this.#push(e.state.link, false, e.state.zIndex);
+            } else {
+                this.#pop(e.state.zIndex);
+            }
+        } else {
+            this.#pop(0);
+        }
+    };
+
+    constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-        const {shadowRoot} = this;
-        const div = document.createElement('div'); 
+        const { shadowRoot } = this;
+        const div = document.createElement('div');
         div.setAttribute("id", "router-content");
         const style = document.createElement('style');
         style.innerHTML = `
-            div {
+            #router-content {
                 width: 100%;
                 min-height: 100vh;
                 position: relative;
@@ -20,23 +36,30 @@ export default class Router extends HTMLElement{
         `;
         shadowRoot.appendChild(style);
         shadowRoot.append(div);
-
+        this.shadowRoot.addEventListener(RouteEvent.name, (e) => {
+            this.#zIndex++;
+            this.#push(e.link, true, this.#zIndex);
+        });
     }
 
     async connectedCallback() {
-       
-        //window.history.pushState(link);
         var link = this.getAttribute('initialPage');
-        this.#push(link);
+        window.addEventListener('popstate', this.#popStateListener);
+        if (link) {
+            this.#push(link, false, this.#zIndex);
+        }
+    }
+
+    disconnectedCallback() {
+        window.removeEventListener('popstate', this.#popStateListener);
     }
 
     set initialPage(link) {
-        console.log(link);
         this.setAttribute('initialPage', link);
-        this.#push(link);
+        this.#push(link, false, this.#zIndex);
     }
 
-    get initialPage(){
+    get initialPage() {
         return this.hasAttribute('initialPage');
     }
 
@@ -44,16 +67,23 @@ export default class Router extends HTMLElement{
         return fetch(path).then(stream => stream.text());
     }
 
-    #push(link, html){
-        fetch(link).then(stream => stream.text()).then(html => {
-            const child = document.createElement('div'); 
-            child.innerHTML = html.trim();
-            this.shadowRoot.querySelector('#router-content').append(child);
-        });
+    #push(link, push, zIndex) {
+        const el = link.split("?");
+        const child = document.createElement('div');
+        const page = document.createElement(el[0]);
+        if (el.length == 2) {
+            page.setAttribute('params', el[1]);
+        }
+        child.append(page);
+        child.setAttribute("style", `zIndex: ${zIndex}; top: 0; left: 0; width: 100%; height:100%; position:absolute; background-color: var(--clr-background); `);
+        this.shadowRoot.querySelector('#router-content').append(child);
+        if (push)
+            window.history.pushState({ zIndex, link }, zIndex, link);
     }
 
-    #pop(){
-        
+    #pop(zIndex) {
+        const content = this.shadowRoot.querySelector('#router-content');
+        content.removeChild(content.lastChild);
+        this.#zIndex = zIndex;
     }
-
 }
