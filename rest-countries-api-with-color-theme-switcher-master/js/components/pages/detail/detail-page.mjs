@@ -30,4 +30,8 @@ export default class DetailPage extends BasePage {
     templateFile() {
         return '/pages/detail/detail.html';
     }
+
+    cssFile() {
+        return '/pages/detail/detail.css';
+    }
 }

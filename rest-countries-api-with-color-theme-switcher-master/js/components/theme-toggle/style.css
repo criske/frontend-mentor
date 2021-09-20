@@ -1,15 +1,22 @@
 a {
-    background-color: var(--clr-background-elements);
     color: var(--clr-text);
     display: inline-block;
-    max-width: 8rem;
+    max-width: 10rem;
     height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    gap: .2rem;
+    gap: .5rem;
     text-transform: capitalize;
+    padding: .5rem;
+    border-radius: var(--radius);
+}
+
+a:active {
+    background-color: var(--clr-background);
+    border-radius: var(--radius);
+    overflow: hidden;
 }
 
 i {

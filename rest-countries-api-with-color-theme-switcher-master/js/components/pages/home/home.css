@@ -1,0 +1,36 @@
+section {
+    height: 100%;
+    width: 100%;
+    padding-top: 3rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 15% 85%;
+}
+
+country-search {
+    width: 75%;
+}
+
+region-filter {
+    margin-left: auto;
+}
+
+@media (max-width: 768px) {
+    country-search {
+        width: 100%;
+    }
+}
+
+@media (max-width: 425px) {
+    section {
+        grid-template-columns: 1fr;
+        grid-template-rows: 12% 12% 76%;
+        padding-top: 2rem;
+    }
+
+    region-filter {
+        grid-column: 1;
+        grid-row: 2;
+        margin-left: unset;
+    }
+}

@@ -7,4 +7,8 @@ export default class HomePage extends BasePage {
     templateFile(){
         return '/pages/home/home.html';
     }
+
+    cssFile(){
+        return '/pages/home/home.css';
+    }
 }

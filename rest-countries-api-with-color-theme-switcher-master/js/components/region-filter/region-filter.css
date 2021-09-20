@@ -1,0 +1,26 @@
+:host {
+    display: inline-block;
+}
+
+select {
+    min-width: 12.5rem;
+    height: 3.5rem;
+    padding: 0 1rem;
+    border-radius: var(--radius);
+    background-color: var(--clr-background-elements);
+    color: var(--clr-text);
+    border: 0;
+    outline: none;
+}
+
+option {
+    /* min-width: inherit;
+    padding-top: 1rem;
+    overflow: hidden; */
+    padding:5px 5px;
+    line-height: 1.5rem;
+}
+
+option[selected="selected"] {
+    background-color: var(--clr-background);
+}

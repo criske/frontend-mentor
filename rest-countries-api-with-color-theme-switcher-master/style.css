@@ -8,12 +8,64 @@
 :root {
     --clr-background: hsl(0, 0%, 98%);
     --clr-background-elements: hsl(209, 23%, 22%);
+
+    --padding-vertical: 5rem;
+    --header-height: 5rem;
 }
 
 body {
     background-color: var(--clr-background);
+    color: var(--clr-text);
     font-family: 'Nunito Sans', sans-serif;
     width: 1440;
     height: 1024;
     position: relative;
+}
+
+.header {
+    background-color: var(--clr-background-elements);
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--padding-vertical);
+    -webkit-box-shadow: 0px 6px 5px -3px rgba(0,0,0,0.15); 
+    box-shadow: 0px 6px 5px -3px rgba(0,0,0,0.15);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+}
+
+.header > theme-toggle {
+    margin-left: auto;
+}
+
+.header > h1 {
+    font-size: 1.48rem;
+    margin: 0;
+}
+
+.content {
+    margin-top: var(--header-height);
+    padding: 0 var(--padding-vertical);
+}
+
+@media (max-width: 768px) {
+    :root {
+        --padding-vertical: 2rem;
+        --header-height: 10rem;
+    }
+
+    .header {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .header > theme-toggle {
+        margin-left: unset;
+    }
+
 }

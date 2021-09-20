@@ -1,5 +1,9 @@
 /*jshint esversion: 9 */
 
+const COMMON = {
+    '--radius': '.3rem',
+}
+
 const THEMES = {
 
     "LIGHT": {
@@ -13,14 +17,15 @@ const THEMES = {
         '--clr-background': 'hsl(207, 26%, 17%)',
         '--clr-background-elements': 'hsl(209, 23%, 22%)',
         '--clr-text': 'hsl(0, 0%, 100%)',
-        '--clr-input': 'hsl(0, 0%, 100%)'
+        '--clr-input': 'hsl(0, 0%, 100%)',
     }
 };
 
 function setTheme(light, el) {
     let root = el || document.documentElement;
     let theme = light ? "LIGHT" : "DARK";
-    for (const [key, value] of Object.entries(THEMES[theme])) {
+    const selected = THEMES[theme];
+    for (const [key, value] of Object.entries({ ...COMMON, ...selected })) {
         root.style.setProperty(key, value);
     }
 }
@@ -38,9 +43,14 @@ export default function () {
             isLight = !isLight;
             setTheme(isLight, el);
         },
+        changeTheme: (changedLight, el) => {
+            isLight = changedLight;
+            setTheme(isLight, el);
+        },
         updateFor: (el) => {
             setTheme(isLight, el);
-        } 
+        },
+        isLight: () => isLight
     };
 }
 
@@ -48,7 +58,7 @@ export class ThemeToggleEvent extends CustomEvent {
 
     static name = "theme-toggle";
 
-    constructor(){
+    constructor() {
         super(ThemeToggleEvent.name, {
             bubbles: true,
             composed: true

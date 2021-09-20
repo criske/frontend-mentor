@@ -5,7 +5,7 @@ import BaseComponent from "../base-component.mjs";
 
 export default class ThemeToggle extends BaseComponent {
 
-    #isLight = true;
+    #isLight;
 
     constructor() {
         super();
@@ -13,13 +13,15 @@ export default class ThemeToggle extends BaseComponent {
 
     render() {
         const btn = this.$('#theme-toggle');
-        const text = this.$('i');
-        text.textContent = this.#isLight ? "light mode" : "dark mode";
-        btn.addEventListener('click',  () => {
-            this.#isLight = !this.#isLight;
-            text.textContent = this.#isLight ? "light mode" : "dark mode";
+        btn.addEventListener('click', () => {
             this.shadowRoot.dispatchEvent(new ThemeToggleEvent());
         });
+        this.#updateText();
+    }
+
+    set isLight(isLight) {
+        this.#isLight = isLight;
+        this.#updateText();
     }
 
     templateFile() {
@@ -28,5 +30,16 @@ export default class ThemeToggle extends BaseComponent {
 
     cssFile() {
         return '/theme-toggle/style.css';
+    }
+
+    #updateText(){
+        const text = this.$('i');
+        const svg = this.$('svg');
+        if (text) {
+            text.textContent = this.#isLight ? "light mode" : "dark mode";
+        }
+        if(svg){
+            svg.setAttribute('fill', this.#isLight ? 'none' : 'currentColor');
+        }
     }
 }

@@ -127,7 +127,7 @@
             },
             "mobile": {
                 "size": {
-                    "width": 375,
+                    "width": 750,
                     "height": 6610
                 },
                 "states": [

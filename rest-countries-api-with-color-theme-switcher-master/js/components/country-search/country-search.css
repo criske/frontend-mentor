@@ -1,0 +1,33 @@
+:host {
+    display: inline-block;
+}
+
+div {
+    background-color: var(--clr-background-elements);
+    height: 3.5rem;
+    min-width: 12rem;
+    display: flex;
+    align-items: center;
+    padding-left: 2rem;
+    padding-right: 1rem;
+    gap: 1rem;
+    border-radius: var(--radius);
+}
+
+input {
+    width: 100%;
+    height: 1.5rem;
+    outline: none;
+    border: 0;
+    background: none;
+    color: var(--clr-input);
+}
+
+::placeholder { 
+    color: var(--clr-input);
+}
+
+svg {
+    height: 1.5rem;
+    stroke: var(--clr-input);
+}
