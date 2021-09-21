@@ -76,14 +76,31 @@ export default class Router extends HTMLElement {
         }
         child.append(page);
         child.setAttribute("style", `zIndex: ${zIndex}; top: 0; left: 0; width: 100%; height:100%; position:absolute; background-color: var(--clr-background); `);
+        const content = this.shadowRoot.querySelector('#router-content');
+        if (content.lastChild != null) {
+            content.lastChild.style.display = "none";
+        }
         this.shadowRoot.querySelector('#router-content').append(child);
         if (push)
-            window.history.pushState({ zIndex, link }, zIndex, link);
+            window.history.pushState({ 
+                zIndex, 
+                link, 
+                scroll: {
+                    top: window.scrollY,
+                    legt: window.scrollX
+                } 
+            }, zIndex, link);
+        window.scroll({
+            top: 0,
+            left: 0,
+            behavior: 'smooth'
+        });
     }
 
     #pop(zIndex) {
         const content = this.shadowRoot.querySelector('#router-content');
         content.removeChild(content.lastChild);
+        content.lastChild.style.display = "block";
         this.#zIndex = zIndex;
     }
 }

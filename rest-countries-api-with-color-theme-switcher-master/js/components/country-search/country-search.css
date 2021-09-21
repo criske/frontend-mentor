@@ -12,6 +12,7 @@ div {
     padding-right: 1rem;
     gap: 1rem;
     border-radius: var(--radius);
+    box-shadow: var(--box-shadow);
 }
 
 input {

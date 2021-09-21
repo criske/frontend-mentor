@@ -34,6 +34,10 @@ export default class BaseComponent extends HTMLElement {
         return this.shadowRoot.querySelector(querySelector);
     }
 
+    dispatchEvent(event) {
+        this.shadowRoot.dispatchEvent(event);
+    }
+
     async loadFile(path) {
         return fetch(path).then(stream => stream.text());
     }

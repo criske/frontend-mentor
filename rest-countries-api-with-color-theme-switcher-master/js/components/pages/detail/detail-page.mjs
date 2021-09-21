@@ -18,13 +18,8 @@ export default class DetailPage extends BasePage {
             return;
         }
 
-        let nextCountry = 1;
-        if (params.country) {
-            nextCountry = parseInt(params.country) + 1;
-        }
-        const nextLink = `detail-page?country=${nextCountry}`;
-        a.setAttribute("href", nextLink);
-        a.innerText = `Next country: ${nextCountry}`;
+        let nextCountry =  params.name || ""; 
+        a.innerText = `Country: ${nextCountry}`;
     }
 
     templateFile() {

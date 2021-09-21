@@ -9,7 +9,6 @@ export class HomePageStateContext extends StateContext {
             mode: 'filtering'
         };
     }
-
     reducer(state, action) {
         let newState;
         switch (action.type) {

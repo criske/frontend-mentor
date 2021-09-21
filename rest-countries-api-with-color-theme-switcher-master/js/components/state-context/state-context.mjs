@@ -9,12 +9,16 @@ export default class StateContext extends HTMLElement {
         this.attachShadow({ mode: 'open' });
         console.log("State context");
         this.shadowRoot.innerHTML = `<slot></slot>`;
-        this.shadowRoot.addEventListener(ActionEvent.name, (e) =>{
+        this.shadowRoot.addEventListener(ActionEvent.name, (e) => {
             this.#state = this.reducer(this.#state, e.action);
+            Array
+                .from(this.querySelectorAll('*'))
+                .filter(e => 'onStateChanged' in e)
+                .forEach(e => e.onStateChanged({ ...this.#state }));
         });
     }
 
-    reducer(state, action){
+    reducer(state, action) {
         return state;
     }
 

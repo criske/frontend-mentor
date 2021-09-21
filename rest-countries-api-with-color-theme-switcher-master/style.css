@@ -20,6 +20,7 @@ body {
     width: 1440;
     height: 1024;
     position: relative;
+    overflow: auto;
 }
 
 .header {

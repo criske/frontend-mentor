@@ -9,8 +9,8 @@ import DetailPage from './components/pages/detail/detail-page.mjs';
 import CountrySearch from './components/country-search/country-search.mjs';
 import RegionFilter from './components/region-filter/region-filter.mjs';
 import CountryList from './components/country-list/country-list.mjs';
-import StateContext from './components/state-context/state-context.mjs';
 import CountryCard from './components/country-card/country-card.mjs';
+import { HomePageStateContext } from './components/pages/home/home-page-state-context.mjs';
 
 document.addEventListener('DOMContentLoaded', ready);
 
@@ -40,9 +40,9 @@ async function ready() {
     customElements.define("country-search", CountrySearch);
     customElements.define("region-filter", RegionFilter);
 
-    customElements.define("country-list", CountryList);
+    customElements.define("country-list", CountryList, {extends : 'ul'});
     customElements.define("country-card", CountryCard);
 
-    customElements.define("state-context", StateContext);
+    customElements.define("home-page-state-context", HomePageStateContext);
 
 }
