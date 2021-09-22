@@ -66,7 +66,6 @@ ul {
         grid-template-columns: 1fr;
         justify-content: start;
         grid-row: 3;
-        outline: 1px solid red;
     }
 
     /* country-card {

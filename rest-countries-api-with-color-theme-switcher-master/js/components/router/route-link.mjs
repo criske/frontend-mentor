@@ -10,11 +10,23 @@ export class RouteLink extends HTMLAnchorElement {
         super();
         this.addEventListener('click', (e) => {
             e.preventDefault();
-            this.dispatchEvent(new RouteEvent(this.getAttribute("href")));
+            const href = this.getAttribute("href").trim().toLowerCase();
+            switch (href) {
+                case "#":
+                    break;
+                case "back":{
+                    window.history.back();
+                    break;
+                }
+                default:{
+                    this.dispatchEvent(new RouteEvent(href));
+                    break;
+                }
+            }
         });
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        // console.log("new href value "  + newValue);
+        console.log("new href value "  + newValue);
     }
 } 

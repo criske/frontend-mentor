@@ -2,7 +2,8 @@
 
 export default class CountriesAPI {
 
-    #BASE_URL = 'https://restcountries.eu/rest/v2';
+    // #BASE_URL = 'https://restcountries.com/v2';
+    #BASE_URL = 'http://localhost:8080/v2';
 
     constructor(dataSource) {
     }
@@ -23,7 +24,7 @@ export default class CountriesAPI {
         return this.#countryDetailFetch(`/name/${name}?fullText=true`);
     }
 
-    async countryCode(code){
+    async code(code){
         return this.#countryDetailFetch(`/alpha/${code}`);
     }
 
@@ -33,12 +34,12 @@ export default class CountriesAPI {
     }
 
     async #countryListFetch(endpoint) {
-        return this.#endpointFetch(`${endpoint}?fields=name;population;region;capital;flag`);
+        return this.#endpointFetch(`${endpoint}?fields=name,population,region,capital,flags`);
     }
 
     async #countryDetailFetch(endpoint) {
         let parsedEndpoint = (endpoint.indexOf('=') === -1) ?  endpoint + '?' : endpoint + '&';
         return this.#endpointFetch(`${parsedEndpoint}` +
-        'fields=name;nativeName;population;topLevelDomain;region;subregion;currencies;capital;flag;languages;borders');
+        'fields=name,nativeName,population,topLevelDomain,region,continent,currencies,capital,flags,languages,borders');
     }
 }
