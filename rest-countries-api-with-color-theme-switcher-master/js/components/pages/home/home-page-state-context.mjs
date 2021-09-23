@@ -6,7 +6,7 @@ export class HomePageStateContext extends StateContext {
         super();
         super.initialState = {
             countries: [],
-            mode: 'filtering'
+            mode: 'filtering' 
         };
     }
     reducer(state, action) {

@@ -2,8 +2,8 @@
 
 export default class CountriesAPI {
 
-    // #BASE_URL = 'https://restcountries.com/v2';
-    #BASE_URL = 'http://localhost:8080/v2';
+    #BASE_URL = 'https://restcountries.com/v2';
+    // #BASE_URL = 'http://localhost:8080/v2';
 
     constructor(dataSource) {
     }
@@ -12,8 +12,8 @@ export default class CountriesAPI {
         return this.#countryListFetch('/all');
     }
 
-    async region(region) {
-        return this.#countryListFetch(`/region/${region}`);
+    async continent(continent) {
+        return this.#countryListFetch(`/continent/${continent}`);
     }
 
     async search(queryName) {
@@ -21,7 +21,7 @@ export default class CountriesAPI {
     }
 
     async country(name){
-        return this.#countryDetailFetch(`/name/${name}?fullText=true`);
+        return this.#countryDetailFetch(`/name/${name}?fullText=true`).then(data => data[0]);
     }
 
     async code(code){

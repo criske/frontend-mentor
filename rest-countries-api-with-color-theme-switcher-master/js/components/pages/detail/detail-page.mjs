@@ -69,17 +69,22 @@ export default class DetailPage extends BasePage {
     paramsChangedCallback(params) {
         if (params.name) {
             window.countriesAPI.country(params.name).then(data => {
-                this.data = data[0];
+                this.data = data;
+                this.#updatePage(this.data);
             });
         } else if (params.code) {
             window.countriesAPI.code(params.code).then(data => {
                 this.data = data;
+                this.#updatePage(this.data);
             });
         }
     }
 
 
     #updatePage(data) {
+        if(!this.$("h1")){
+            return;
+        }
         this.$("h1").textContent = data.name;
         this.$("img").setAttribute("src", data.flags[0]);
         this.$("#native-name").textContent = data.nativeName;

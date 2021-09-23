@@ -8,15 +8,26 @@ export default class Router extends HTMLElement {
 
     #zIndex = 0;
 
+    #reload = false;
+
+    #refreshListener = (e) => {
+        const currentState  = window.history.state;
+        if(currentState !== null){
+            this.#reload = true;
+            this.#zIndex = currentState.zIndex;
+            this.#add(currentState.link, false, this.#zIndex);
+        }
+    }
+
     #popStateListener = (e) => {
         if (e.state) {
             if (this.#zIndex < e.state.zIndex) {
-                this.#push(e.state.link, false, e.state.zIndex);
+                this.#add(e.state.link, false, e.state.zIndex);
             } else {
-                this.#pop(e.state.zIndex);
+                this.#pop(e.state);
             }
         } else {
-            this.#pop(0);
+            this.#pop({ zIndex : 0});
         }
     };
 
@@ -38,25 +49,27 @@ export default class Router extends HTMLElement {
         shadowRoot.append(div);
         this.shadowRoot.addEventListener(RouteEvent.name, (e) => {
             this.#zIndex++;
-            this.#push(e.link, true, this.#zIndex);
+            this.#add(e.link, true, this.#zIndex);
         });
     }
 
-    async connectedCallback() {
+    connectedCallback() {
         var link = this.getAttribute('initialPage');
+        window.addEventListener("load", this.#refreshListener);
         window.addEventListener('popstate', this.#popStateListener);
-        if (link) {
-            this.#push(link, false, this.#zIndex);
+        if (link && !this.#reload) {
+            this.#add(link, false, this.#zIndex);
         }
     }
 
     disconnectedCallback() {
+        window.removeEventListener('load', this.#popStateListener);
         window.removeEventListener('popstate', this.#popStateListener);
     }
 
     set initialPage(link) {
         this.setAttribute('initialPage', link);
-        this.#push(link, false, this.#zIndex);
+        this.#add(link, false, this.#zIndex);
     }
 
     get initialPage() {
@@ -67,7 +80,7 @@ export default class Router extends HTMLElement {
         return fetch(path).then(stream => stream.text());
     }
 
-    #push(link, push, zIndex) {
+    #add(link, pushToHistory, zIndex) {
         const el = link.split("?");
         const child = document.createElement('div');
         const page = document.createElement(el[0]);
@@ -81,7 +94,7 @@ export default class Router extends HTMLElement {
             content.lastChild.style.display = "none";
         }
         this.shadowRoot.querySelector('#router-content').append(child);
-        if (push)
+        if (pushToHistory)
             window.history.pushState({ 
                 zIndex, 
                 link, 
@@ -89,7 +102,7 @@ export default class Router extends HTMLElement {
                     top: window.scrollY,
                     legt: window.scrollX
                 } 
-            }, zIndex, link);
+            }, zIndex);
         window.scroll({
             top: 0,
             left: 0,
@@ -97,10 +110,15 @@ export default class Router extends HTMLElement {
         });
     }
 
-    #pop(zIndex) {
+    #pop(state) {
         const content = this.shadowRoot.querySelector('#router-content');
         content.removeChild(content.lastChild);
-        content.lastChild.style.display = "block";
-        this.#zIndex = zIndex;
+        const count = content.childElementCount;
+        if(count <= state.zIndex){
+            this.#add(state.link, false, state.zIndex);
+        }else{
+            content.lastChild.style.display = "block";
+        }
+        this.#zIndex = state.zIndex;
     }
 }

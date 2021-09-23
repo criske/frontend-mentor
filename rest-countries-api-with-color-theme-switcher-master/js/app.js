@@ -2,7 +2,7 @@
 import CountriesAPI from './countries-api.mjs';
 import ThemeToggle from './components/theme-toggle/index.mjs';
 import ThemeContext from './components/theme-context/index.mjs';
-import Router from './components/router/index.mjs';
+import Router from './components/router/router.mjs';
 import { RouteLink } from './components/router/route-link.mjs';
 import HomePage from './components/pages/home/home-page.mjs';
 import DetailPage from './components/pages/detail/detail-page.mjs';
@@ -11,6 +11,10 @@ import RegionFilter from './components/region-filter/region-filter.mjs';
 import CountryList from './components/country-list/country-list.mjs';
 import CountryCard from './components/country-card/country-card.mjs';
 import { HomePageStateContext } from './components/pages/home/home-page-state-context.mjs';
+
+window.addEventListener("load", () => {
+    console.log("Loaded from outside router");
+});
 
 document.addEventListener('DOMContentLoaded', ready);
 

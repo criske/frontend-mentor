@@ -7,7 +7,7 @@ export default class CountryCard extends BaseComponent {
         if(this.hasAttribute("name")){
             this.dispatchEvent(new RouteEvent(`detail-page?name=${this.getAttribute('name')}`));
            // alert(this.getAttribute('name'));
-        }
+        };
     };
 
     constructor(){
@@ -35,10 +35,6 @@ export default class CountryCard extends BaseComponent {
         }
     }
 
-    disconnectedCallback(){
-        this.$('section').removeEventListener(this.#clickListener);
-    }
-    
 
     attributeChangedCallback(name, oldValue, newValue) {
         switch (name) {
