@@ -11,14 +11,18 @@ export default class BaseComponent extends HTMLElement {
         const {shadowRoot} = this;
         const template = document.createElement('template'); 
 
-        const cssFile = this.cssFile();
-        let css = '';
-        if(cssFile){
-            const content = await this.loadFile(`./js/components${this.cssFile()}`);
-            css = `<style>${content}</style>`;
+        let content = this.template();
+        if(content === null){
+            const cssFile = this.cssFile();
+            let css = '';
+            if(cssFile){
+                const cssContent = await this.loadFile(`./js/components${this.cssFile()}`);
+                css = `<style>${cssContent}</style>`;
+            }
+            const html = await this.loadFile(`./js/components${this.templateFile()}`);
+            content = css + html.trim();
         }
-        const html = await this.loadFile(`./js/components${this.templateFile()}`);
-        template.innerHTML = css + html.trim();
+        template.innerHTML = content;
         shadowRoot.innerHTML = '';
         shadowRoot.appendChild(template.content.cloneNode(true));
         this.render();
@@ -27,6 +31,8 @@ export default class BaseComponent extends HTMLElement {
     render(){}
 
     templateFile(){}
+
+    template(){ return null; }
 
     cssFile() {}
 

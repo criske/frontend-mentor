@@ -6,58 +6,6 @@ export default class DetailPage extends BasePage {
 
     constructor() {
         super();
-        // this.data = JSON.parse(`
-        // [
-        //     {
-        //         "currencies": [
-        //             {
-        //                 "code": "EUR",
-        //                 "name": "Euro",
-        //                 "symbol": "€"
-        //             }
-        //         ],
-        //         "languages": [
-        //             {
-        //                 "iso639_1": "nl",
-        //                 "iso639_2": "nld",
-        //                 "name": "Dutch",
-        //                 "nativeName": "Nederlands"
-        //             },
-        //             {
-        //                 "iso639_1": "fr",
-        //                 "iso639_2": "fra",
-        //                 "name": "French",
-        //                 "nativeName": "français"
-        //             },
-        //             {
-        //                 "iso639_1": "de",
-        //                 "iso639_2": "deu",
-        //                 "name": "German",
-        //                 "nativeName": "Deutsch"
-        //             }
-        //         ],
-        //         "flags": [
-        //             "https://restcountries.com/data/bel.svg",
-        //             "https://restcountries.com/data/png/bel.png"
-        //         ],
-        //         "name": "Belgium",
-        //         "topLevelDomain": [
-        //             ".be"
-        //         ],
-        //         "capital": "Brussels",
-        //         "region": "Western Europe",
-        //         "continent": "Europe",
-        //         "population": 11319511,
-        //         "borders": [
-        //             "FRA",
-        //             "DEU",
-        //             "LUX",
-        //             "NLD"
-        //         ],
-        //         "nativeName": "België"
-        //     }
-        // ]
-        // `)[0];
     }
 
     render() {
@@ -82,7 +30,7 @@ export default class DetailPage extends BasePage {
 
 
     #updatePage(data) {
-        if(!this.$("h1")){
+        if(!data || !this.$("h1")){
             return;
         }
         this.$("h1").textContent = data.name;

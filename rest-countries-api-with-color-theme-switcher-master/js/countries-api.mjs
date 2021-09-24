@@ -8,38 +8,47 @@ export default class CountriesAPI {
     constructor(dataSource) {
     }
 
-    async all() {
+    all() {
         return this.#countryListFetch('/all');
     }
 
-    async continent(continent) {
+    continent(continent) {
         return this.#countryListFetch(`/continent/${continent}`);
     }
 
-    async search(queryName) {
+    search(queryName) {
         return this.#countryListFetch(`/name/${queryName}`);
     }
 
-    async country(name){
-        return this.#countryDetailFetch(`/name/${name}?fullText=true`).then(data => data[0]);
+    country(name) {
+        let {promise, cancelHandler} = this.#countryDetailFetch(`/name/${name}?fullText=true`);
+        promise = promise.then(data => data[0]); // cleanup this should be a single country obj not an array[1];
+        return { promise, cancelHandler };
     }
 
-    async code(code){
+    code(code) {
         return this.#countryDetailFetch(`/alpha/${code}`);
     }
 
-    async #endpointFetch(endpoint) {
-        return fetch(`${this.#BASE_URL}${endpoint}`)
-            .then(response => response.ok ? response.json() : Promise.reject(response));
-    }
-
-    async #countryListFetch(endpoint) {
+    #countryListFetch(endpoint) {
         return this.#endpointFetch(`${endpoint}?fields=name,population,region,capital,flags`);
     }
 
-    async #countryDetailFetch(endpoint) {
-        let parsedEndpoint = (endpoint.indexOf('=') === -1) ?  endpoint + '?' : endpoint + '&';
+    #countryDetailFetch(endpoint) {
+        let parsedEndpoint = (endpoint.indexOf('=') === -1) ? endpoint + '?' : endpoint + '&';
         return this.#endpointFetch(`${parsedEndpoint}` +
-        'fields=name,nativeName,population,topLevelDomain,region,continent,currencies,capital,flags,languages,borders');
+            'fields=name,nativeName,population,topLevelDomain,region,continent,currencies,capital,flags,languages,borders');
     }
+
+    #endpointFetch(endpoint) {
+        const abortController = new AbortController();
+        const signal = abortController.signal;
+        //TODO force cache for now;
+        const promise =  fetch(`${this.#BASE_URL}${endpoint}`, { signal, cache : "force-cache" })
+            .then(response => response.ok ? response.json() : Promise.reject(response))
+            .then(data => data.status ? Promise.reject(data) : Promise.resolve(data));
+        const cancelHandler = () => abortController.abort();
+        return { promise, cancelHandler };
+    }
+
 }

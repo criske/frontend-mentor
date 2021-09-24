@@ -68,7 +68,7 @@ ul {
         grid-row: 3;
     }
 
-    /* country-card {
-         width: 16%;
-    } */
+    country-card {
+        width: 375px;
+    }
 }

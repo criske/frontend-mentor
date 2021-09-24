@@ -36,7 +36,7 @@ export default class ThemeToggle extends BaseComponent {
         const text = this.$('i');
         const svg = this.$('svg');
         if (text) {
-            text.textContent = this.#isLight ? "dark mode" : "light mode";
+            text.textContent = this.#isLight ? "light mode" : "dark mode";
         }
         if(svg){
             svg.setAttribute('fill', this.#isLight ? 'none' : 'currentColor');

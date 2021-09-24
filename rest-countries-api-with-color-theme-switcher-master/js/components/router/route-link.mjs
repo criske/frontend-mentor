@@ -27,6 +27,6 @@ export class RouteLink extends HTMLAnchorElement {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        console.log("new href value "  + newValue);
+        // console.log("new href value "  + newValue);
     }
 } 

@@ -2,7 +2,7 @@
     display: inline-block;
 }
 
-div {
+section {
     background-color: var(--clr-background-elements);
     height: 3.5rem;
     min-width: 12rem;
@@ -31,4 +31,20 @@ input {
 svg {
     height: 1.5rem;
     stroke: var(--clr-input);
+}
+
+div {
+    position: relative;
+    width: 100%;
+}
+
+div > svg {
+    position: absolute;
+    right: 0;
+    top: 10%;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
 }

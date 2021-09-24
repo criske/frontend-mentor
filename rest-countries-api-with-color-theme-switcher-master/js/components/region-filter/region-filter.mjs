@@ -7,7 +7,7 @@ export default class RegionFilter extends BaseComponent {
         this.#filterData(this.$('#filter').value);
 
         this.$('#filter').addEventListener('change', e =>{
-            this.#filterData(e.target.value);
+            this.#filterData(e.target.value);        
         });
     }
 
@@ -20,10 +20,16 @@ export default class RegionFilter extends BaseComponent {
         }
         apiCall.then(data => {
             this.shadowRoot.dispatchEvent(new ActionEvent(
-                "countries",
+                "filter",
                 data
             ));
         });
+    }
+
+    onStateChanged(state){
+        if(state.mode === 'search'){
+            this.$('#filter').value = "";
+        }
     }
 
     templateFile() {

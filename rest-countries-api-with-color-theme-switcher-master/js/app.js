@@ -1,5 +1,7 @@
 /*jshint esversion: 9 */
 import CountriesAPI from './countries-api.mjs';
+import CountriesAPIController from './countries-api-controller.mjs';
+import { CountriesAPIControllerEvent }from './countries-api-controller.mjs';
 import ThemeToggle from './components/theme-toggle/index.mjs';
 import ThemeContext from './components/theme-context/index.mjs';
 import Router from './components/router/router.mjs';
@@ -11,14 +13,11 @@ import RegionFilter from './components/region-filter/region-filter.mjs';
 import CountryList from './components/country-list/country-list.mjs';
 import CountryCard from './components/country-card/country-card.mjs';
 import { HomePageStateContext } from './components/pages/home/home-page-state-context.mjs';
+import LoadingSpinner from './components/loading-spinner/loading-spinner.mjs';
 
-window.addEventListener("load", () => {
-    console.log("Loaded from outside router");
-});
+window.countriesAPI = new CountriesAPIController(new CountriesAPI());
 
 document.addEventListener('DOMContentLoaded', ready);
-
-window.countriesAPI = new CountriesAPI();
 
 async function ready() {
 
@@ -31,7 +30,8 @@ async function ready() {
     //     document.getElementById('test-display').textContent = "Error code : " + e.status ;
     // } 
 
-    
+    customElements.define("loading-spinner", LoadingSpinner);
+
     customElements.define("home-page", HomePage);
     customElements.define("detail-page", DetailPage);
 

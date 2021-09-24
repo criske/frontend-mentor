@@ -6,25 +6,14 @@ export class HomePageStateContext extends StateContext {
         super();
         super.initialState = {
             countries: [],
-            mode: 'filtering' 
+            mode: 'filter' 
         };
     }
     reducer(state, action) {
-        let newState;
-        switch (action.type) {
-            case 'countries': {
-                newState = { ...state, countries: action.data };
-                break;
-            }
-            case 'mode' : {
-                newState = {...state, mode: action.data};
-                break;
-            }
-            default: {
-                newState = state;
-            }
-        }
-        return newState;
+        return {
+            mode: action.type,
+            countries: action.data
+        };
     }
 
 }
