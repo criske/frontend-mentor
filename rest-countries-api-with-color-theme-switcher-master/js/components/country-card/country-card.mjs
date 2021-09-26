@@ -6,7 +6,6 @@ export default class CountryCard extends BaseComponent {
     #clickListener = ()=> {
         if(this.hasAttribute("name")){
             this.dispatchEvent(new RouteEvent(`detail-page?name=${this.getAttribute('name')}`));
-           // alert(this.getAttribute('name'));
         };
     };
 
@@ -57,13 +56,4 @@ export default class CountryCard extends BaseComponent {
                 break;
         }
     }
-
-    templateFile() {
-        return '/country-card/country-card.html';
-    }
-
-    cssFile() {
-        return '/country-card/country-card.css';
-    }
-
 }

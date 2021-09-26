@@ -2,7 +2,7 @@
 import CountriesAPI from './countries-api.mjs';
 import CountriesAPIController from './countries-api-controller.mjs';
 import { CountriesAPIControllerEvent }from './countries-api-controller.mjs';
-import ThemeToggle from './components/theme-toggle/index.mjs';
+import ThemeToggle from './components/theme-toggle/theme-toggle.mjs';
 import ThemeContext from './components/theme-context/index.mjs';
 import Router from './components/router/router.mjs';
 import { RouteLink } from './components/router/route-link.mjs';
@@ -14,6 +14,7 @@ import CountryList from './components/country-list/country-list.mjs';
 import CountryCard from './components/country-card/country-card.mjs';
 import { HomePageStateContext } from './components/pages/home/home-page-state-context.mjs';
 import LoadingSpinner from './components/loading-spinner/loading-spinner.mjs';
+import FlagImage from './components/flag-image/flag-image.mjs';
 
 window.countriesAPI = new CountriesAPIController(new CountriesAPI());
 
@@ -21,14 +22,18 @@ document.addEventListener('DOMContentLoaded', ready);
 
 async function ready() {
 
-
-    // try {
-    //     const api = new CountriesAPI();
-    //    // const call = await api.countryCode('bra');
-    //    // document.getElementById('test-display').textContent = JSON.stringify(call);
-    // } catch (e) {
-    //     document.getElementById('test-display').textContent = "Error code : " + e.status ;
-    // } 
+    window.addEventListener(CountriesAPIControllerEvent.name, (e) => {
+        const data = e.data;
+        const loader = document.getElementById('loader');
+        if(data.loading){
+            loader.classList.remove('hidden');
+        }else{
+            loader.classList.add('hidden');
+        }
+        if(data.error){
+            console.log("Error: " + data.error.message);
+        }
+    });
 
     customElements.define("loading-spinner", LoadingSpinner);
 
@@ -41,6 +46,7 @@ async function ready() {
     customElements.define("theme-context", ThemeContext, {extends: 'body'});
 
 
+    customElements.define("flag-image", FlagImage);
     customElements.define("country-search", CountrySearch);
     customElements.define("region-filter", RegionFilter);
 
@@ -48,5 +54,8 @@ async function ready() {
     customElements.define("country-card", CountryCard);
 
     customElements.define("home-page-state-context", HomePageStateContext);
+
+
+   
 
 }

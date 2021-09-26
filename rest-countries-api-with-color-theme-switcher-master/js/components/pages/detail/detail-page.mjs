@@ -34,7 +34,7 @@ export default class DetailPage extends BasePage {
             return;
         }
         this.$("h1").textContent = data.name;
-        this.$("img").setAttribute("src", data.flags[0]);
+        this.$("flag-image").setAttribute("src", data.flags[0]);
         this.$("#native-name").textContent = data.nativeName;
         this.$("#population").textContent = data.population;
         this.$("#region").textContent = data.continent;

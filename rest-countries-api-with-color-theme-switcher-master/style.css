@@ -55,10 +55,14 @@ body {
 }
 
 loading-spinner {
-    position: absolute;
+    position: fixed;
     z-index: 999;
-    bottom: 6rem;
+    bottom: 2rem;
     right: var(--padding-vertical);
+}
+
+.hidden {
+    display: none;
 }
 
 @media (max-width: 768px) {
@@ -69,7 +73,7 @@ loading-spinner {
     }
 
     :root {
-        --padding-vertical: 2rem;
+        --padding-vertical: 1rem;
         --header-height: 10rem;
     }
 

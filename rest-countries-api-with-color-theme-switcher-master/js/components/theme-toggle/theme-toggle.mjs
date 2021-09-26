@@ -24,14 +24,6 @@ export default class ThemeToggle extends BaseComponent {
         this.#updateText();
     }
 
-    templateFile() {
-        return '/theme-toggle/template.html';
-    }
-
-    cssFile() {
-        return '/theme-toggle/style.css';
-    }
-
     #updateText(){
         const text = this.$('i');
         const svg = this.$('svg');

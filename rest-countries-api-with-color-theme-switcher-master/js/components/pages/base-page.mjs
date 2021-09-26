@@ -6,6 +6,8 @@ export default class BasePage extends BaseComponent {
 
     static get observedAttributes() { return ["params"]; }
 
+    static autoImportTemplates() { return false;}
+
     #params = {};
 
     constructor() {

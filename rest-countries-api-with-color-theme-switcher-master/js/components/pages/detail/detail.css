@@ -62,12 +62,14 @@ h1 {
     flex-shrink: 0;
 }
 
-img {
+flag-image {
     grid-column: 1;
     grid-row: 2 / span 3;
 
     width: 82.5%;
-    height: 100%;   
+    height: 100%; 
+    max-width: 485px;
+    max-height: 330px;  
 
     align-self: flex-end;
 
@@ -120,7 +122,7 @@ a {
 }
 
 @media (min-width: 1441px){
-    img {
+    flag-image {
         width: 36rem;
         height: 24.5rem;
         justify-self: center;
@@ -149,7 +151,7 @@ a {
         flex-direction: column;
         align-items: flex-start;
     }
-    img {
+    flag-image {
         height: 50%;
         align-self: center;
     }
@@ -157,12 +159,12 @@ a {
 
 @media (max-width: 768px) {
     section {
-        height: 100%;
+        height: 150%;
         grid-template-columns: 1fr;
         grid-template-rows: auto;
     }
 
-    img {
+    flag-image {
         width: 100%;
         height: 85%;
         grid-row: 2;

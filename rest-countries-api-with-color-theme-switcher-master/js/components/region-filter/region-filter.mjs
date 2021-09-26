@@ -31,13 +31,5 @@ export default class RegionFilter extends BaseComponent {
             this.$('#filter').value = "";
         }
     }
-
-    templateFile() {
-        return '/region-filter/region-filter.html';
-    }
-
-    cssFile() {
-        return '/region-filter/region-filter.css';
-    }
-
+    
 }

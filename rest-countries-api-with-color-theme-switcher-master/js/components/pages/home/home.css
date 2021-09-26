@@ -69,6 +69,6 @@ ul {
     }
 
     country-card {
-        width: 375px;
+        width: 100%;
     }
 }

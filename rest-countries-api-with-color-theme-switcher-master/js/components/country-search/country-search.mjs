@@ -13,6 +13,8 @@ export default class CountrySearch extends BaseComponent {
         if(search.value > 0){
             clear.classList.remove('.hidden');
         }
+
+        //TODO refactor debounce into its own function
         search.addEventListener('input', (e) => {
             const value = e.target.value;
             if (value.length >= 3) {
@@ -41,21 +43,4 @@ export default class CountrySearch extends BaseComponent {
             this.$('#search').value = "";
         }
     }
-
-    templateFile() {
-        return '/country-search/country-search.html';
-    }
-
-    cssFile() {
-        return '/country-search/country-search.css';
-    }
-
-    #debounce(func, timeout = 300) {
-        let timer;
-        return (...args) => {
-            clearTimeout(timer);
-            timer = setTimeout(() => { func.apply(this, args); }, timeout);
-        };
-    }
-
 }
