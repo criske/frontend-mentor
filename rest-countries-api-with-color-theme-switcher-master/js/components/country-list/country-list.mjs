@@ -1,10 +1,8 @@
+import StateAwareComponentAdapter from "../state-context/state-aware-component-adapter.mjs";
+
 export default class CountryList extends HTMLUListElement {
 
-    constructor(){
-        super();
-    }
-
-    onStateChanged(state){
+    #adapter = new StateAwareComponentAdapter((state) => {
         this.replaceChildren();
         state.countries.forEach(c => {
             const el = document.createElement("country-card");
@@ -15,5 +13,18 @@ export default class CountryList extends HTMLUListElement {
             el.setAttribute("region", c.region);
             this.appendChild(el);
         });
+    });
+
+
+    constructor(){
+        super();
+    }
+
+    connectedCallback(){
+        this.#adapter.setConnected();
+    }
+
+    onStateChanged(state){
+       this.#adapter.onStateChanged(state);
     }
 }

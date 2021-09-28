@@ -1,7 +1,7 @@
-import BaseComponent from "../base-component.mjs";
 import ActionEvent from "../state-context/action-event.mjs";
+import StateAwareComponent from "../state-context/state-aware-component.mjs";
 
-export default class RegionFilter extends BaseComponent {
+export default class RegionFilter extends StateAwareComponent {
 
 
     render() {
@@ -12,7 +12,7 @@ export default class RegionFilter extends BaseComponent {
         });
 
         this.$('label').addEventListener('click', () => {
-            this.$('#filter')
+            this.$('#filter');
         });
     }
 
@@ -31,7 +31,7 @@ export default class RegionFilter extends BaseComponent {
         });
     }
 
-    onStateChanged(state){
+    onSafeStateChanged(state){
         if(state.mode === 'search'){
             this.$('#filter').value = "";
         }

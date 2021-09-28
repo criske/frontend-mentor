@@ -1,13 +1,11 @@
-import BaseComponent from "../base-component.mjs";
 import ActionEvent from "../state-context/action-event.mjs";
+import StateAwareComponent from "../state-context/state-aware-component.mjs";
 
-export default class CountrySearch extends BaseComponent {
+export default class CountrySearch extends StateAwareComponent {
 
     #search = "";
 
     #timeout;
-
-    #rendered = false;
 
     render() {
         const clear = this.$('#clear');
@@ -37,12 +35,10 @@ export default class CountrySearch extends BaseComponent {
             search.value = "";
             clear.classList.add('hidden');
         });
-
-        this.#rendered = true;
     }
 
-    onStateChanged(state){
-        if(state.mode === 'filter' && this.#rendered){
+    onSafeStateChanged(state){
+        if(state.mode === 'filter'){
             this.$('#clear').classList.add('hidden');
             this.$('#search').value = "";
         }
