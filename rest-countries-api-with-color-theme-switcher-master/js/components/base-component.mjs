@@ -2,8 +2,6 @@
 
 export default class BaseComponent extends HTMLElement {
 
-    _cachedTemplate;
-
     static autoImportTemplates() {
         return true;
     }
@@ -20,7 +18,6 @@ export default class BaseComponent extends HTMLElement {
         let content;
         if (this.constructor.cachedTemplate) {
             content = this.constructor.cachedTemplate;
-            console.log("created from cache");
         } else {
             if (this.constructor.autoImportTemplates()) {
                 const name = this.#camelToHyphenClassName();
@@ -42,7 +39,6 @@ export default class BaseComponent extends HTMLElement {
                 }
             }
             this.constructor.cachedTemplate = content;
-            console.log("created");
         }
         template.innerHTML = content;
         shadowRoot.innerHTML = '';
@@ -67,7 +63,6 @@ export default class BaseComponent extends HTMLElement {
     }
 
     async loadFile(path) {
-        console.log("fetch template file "  +path)
         return fetch(path).then(stream => stream.text());
     }
 
