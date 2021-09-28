@@ -37,7 +37,7 @@ export default class CountriesAPI {
     #countryDetailFetch(endpoint) {
         let parsedEndpoint = (endpoint.indexOf('=') === -1) ? endpoint + '?' : endpoint + '&';
         return this.#endpointFetch(`${parsedEndpoint}` +
-            'fields=name,nativeName,population,topLevelDomain,region,continent,currencies,capital,flags,languages,borders');
+            'fields=name,nativeName,population,topLevelDomain,region,subregion,currencies,capital,flags,languages,borders');
     }
 
     #endpointFetch(endpoint) {

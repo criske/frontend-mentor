@@ -3,11 +3,16 @@ import ActionEvent from "../state-context/action-event.mjs";
 
 export default class RegionFilter extends BaseComponent {
 
+
     render() {
         this.#filterData(this.$('#filter').value);
 
         this.$('#filter').addEventListener('change', e =>{
-            this.#filterData(e.target.value);        
+            this.#filterData(e.target.value);  
+        });
+
+        this.$('label').addEventListener('click', () => {
+            this.$('#filter')
         });
     }
 
