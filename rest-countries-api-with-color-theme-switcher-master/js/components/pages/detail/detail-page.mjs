@@ -36,7 +36,7 @@ export default class DetailPage extends BasePage {
         this.$("h1").textContent = data.name;
         this.$("flag-image").setAttribute("src", data.flags.svg);
         this.$("#native-name").textContent = data.nativeName;
-        this.$("#population").textContent = data.population;
+        this.$("#population").textContent = new Intl.NumberFormat().format(parseInt(data.population));
         this.$("#region").textContent = data.region;
         this.$("#sub-region").textContent = data.subregion;
         this.$("#capital").textContent = data.capital;

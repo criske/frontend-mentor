@@ -30,7 +30,7 @@ export default class CountryCard extends BaseComponent {
             this.$('#capital').textContent = this.getAttribute("capital");
         }
         if(this.hasAttribute("population")){
-            this.$('#population').textContent = this.getAttribute("population");
+            this.$('#population').textContent = new Intl.NumberFormat().format(parseInt(this.getAttribute("population")));
         }
     }
 
@@ -44,7 +44,7 @@ export default class CountryCard extends BaseComponent {
                 this.$('#name').textContent = newValue;
                 break;
             case 'population':
-                this.$('#population').textContent = newValue;
+                this.$('#population').textContent = new Intl.NumberFormat().format(parseInt(newValue));
                 break;
             case 'region':
                 this.$('#region').textContent = newValue;
