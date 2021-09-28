@@ -7,6 +7,8 @@ export default class CountrySearch extends BaseComponent {
 
     #timeout;
 
+    #rendered = false;
+
     render() {
         const clear = this.$('#clear');
         const search = this.$('#search');
@@ -35,10 +37,12 @@ export default class CountrySearch extends BaseComponent {
             search.value = "";
             clear.classList.add('hidden');
         });
+
+        this.#rendered = true;
     }
 
     onStateChanged(state){
-        if(state.mode === 'filter'){
+        if(state.mode === 'filter' && this.#rendered){
             this.$('#clear').classList.add('hidden');
             this.$('#search').value = "";
         }
