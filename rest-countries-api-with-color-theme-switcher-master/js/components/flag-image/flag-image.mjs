@@ -30,7 +30,7 @@ export default class FlagImage extends BaseComponent {
         this.$('loading-spinner').classList.remove('hidden');
     }
 
-    static template() {
+    template() {
         return `
         <style>
         :host{
