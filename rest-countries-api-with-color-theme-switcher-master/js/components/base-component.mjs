@@ -2,6 +2,8 @@
 
 export default class BaseComponent extends HTMLElement {
 
+    _cachedTemplate;
+
     static autoImportTemplates() {
         return true;
     }
@@ -16,24 +18,31 @@ export default class BaseComponent extends HTMLElement {
         const template = document.createElement('template');
 
         let content;
-        if (this.constructor.autoImportTemplates()) {
-            const name = this.#camelToHyphenClassName();
-            const cssContent = await this.loadFile(`./js/components/${name}/${name}.css`);
-            const css = `<style>${cssContent}</style>`;
-            const html = await this.loadFile(`./js/components/${name}/${name}.html`);
-            content = css + html.trim();
+        if (this.constructor.cachedTemplate) {
+            content = this.constructor.cachedTemplate;
+            console.log("created from cache");
         } else {
-            content = this.template();
-            if (content === null) {
-                const cssFile = this.cssFile();
-                let css = '';
-                if (cssFile) {
-                    const cssContent = await this.loadFile(`./js/components${this.cssFile()}`);
-                    css = `<style>${cssContent}</style>`;
-                }
-                const html = await this.loadFile(`./js/components${this.templateFile()}`);
+            if (this.constructor.autoImportTemplates()) {
+                const name = this.#camelToHyphenClassName();
+                const cssContent = await this.loadFile(`./js/components/${name}/${name}.css`);
+                const css = `<style>${cssContent}</style>`;
+                const html = await this.loadFile(`./js/components/${name}/${name}.html`);
                 content = css + html.trim();
+            } else {
+                content = this.template();
+                if (content === null) {
+                    const cssFile = this.cssFile();
+                    let css = '';
+                    if (cssFile) {
+                        const cssContent = await this.loadFile(`./js/components${this.cssFile()}`);
+                        css = `<style>${cssContent}</style>`;
+                    }
+                    const html = await this.loadFile(`./js/components${this.templateFile()}`);
+                    content = css + html.trim();
+                }
             }
+            this.constructor.cachedTemplate = content;
+            console.log("created");
         }
         template.innerHTML = content;
         shadowRoot.innerHTML = '';
@@ -58,6 +67,7 @@ export default class BaseComponent extends HTMLElement {
     }
 
     async loadFile(path) {
+        console.log("fetch template file "  +path)
         return fetch(path).then(stream => stream.text());
     }
 
