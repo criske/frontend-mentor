@@ -53,11 +53,11 @@ export default class DetailPage extends BasePage {
         });
     }
 
-    templateFile() {
+    static templateFile() {
         return '/pages/detail/detail.html';
     }
 
-    cssFile() {
+    static cssFile() {
         return '/pages/detail/detail.css';
     }
 }
