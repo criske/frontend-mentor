@@ -65,6 +65,21 @@ loading-spinner {
     display: none;
 }
 
+.attribution {
+    position: fixed;
+    color: var(--text-color);
+    opacity: .5;
+    font-size: 12px;
+    z-index: 1000;
+    bottom: 2rem;
+    margin-left: var(--padding-vertical);
+}
+.attribution,
+.attribution a:link,
+.attribution a:visited{
+    color: var(--text-color);
+}
+
 @media (max-width: 768px) {
 
     body {
