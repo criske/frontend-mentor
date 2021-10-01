@@ -19,7 +19,7 @@ export default class CountryList extends HTMLUListElement {
         const c =  arr[0];
 
         const el = document.createElement("country-card");
-            el.setAttribute("flag", c.flag || c.flags.svg);
+            el.setAttribute("flag", c.flag);
             el.setAttribute("name", c.name);
             el.setAttribute("population", c.population);
             el.setAttribute("capital", c.capital);
@@ -30,7 +30,7 @@ export default class CountryList extends HTMLUListElement {
             for(let i = 1; i < arr.length; i++){
                 const c = arr[i];
                 const el = document.createElement("country-card");
-                el.setAttribute("flag", c.flag || c.flags.svg);
+                el.setAttribute("flag", c.flag);
                 el.setAttribute("name", c.name);
                 el.setAttribute("population", c.population);
                 el.setAttribute("capital", c.capital);
