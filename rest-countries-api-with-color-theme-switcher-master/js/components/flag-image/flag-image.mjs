@@ -13,6 +13,10 @@ export default class FlagImage extends BaseComponent {
             this.$('loading-spinner').classList.add('hidden');
             this.$('img').classList.remove('hidden');
         });
+        this.$('img').addEventListener('error', () => {
+            this.$('loading-spinner').classList.add('hidden');
+            this.$('svg').classList.remove('hidden');
+        });
         if (this.hasAttribute('src')) {
             this.#setSrc(this.getAttribute('src'));
         }
@@ -34,11 +38,13 @@ export default class FlagImage extends BaseComponent {
         return `
         <style>
         :host{
-            display: block;
+            display: flex;
             position: relative;
             oveflow: hidden;
             height: 100%;
             width: 100%;
+            align-items:center;
+            justify-content:center;
         }
         
         .hidden {
@@ -63,8 +69,17 @@ export default class FlagImage extends BaseComponent {
             align-items: center;
             justify-content: center;
         }
+
+        svg {
+            width: 25%;
+            opacity: .3;
+        }
+
         </style>
         <img class="hidden"></img>
+        <svg xmlns="http://www.w3.org/2000/svg" class="hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
         <div class="loading-spinner-container">
             <loading-spinner size="2rem" thickness="1px"></loading-spinner>
         </div>
