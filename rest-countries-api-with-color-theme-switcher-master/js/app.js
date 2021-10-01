@@ -56,9 +56,3 @@ async function ready() {
     customElements.define("home-page-state-context", HomePageStateContext);
 
 }
-
-
-window.flagRedirectToWikipedia = function (countryName) {
-    const flag = "Flag_of_" + countryName.replaceAll(" ", "_");
-    return `https://upload.wikimedia.org/wikipedia/commons/thumb/e/ef/${flag}.svg/640px-${flag}.svg.png`;
-}

@@ -83,23 +83,4 @@ export default class CountriesAPI {
         return c;
     }
 
-    // this.$("h1").textContent = data.name;
-    // this.$("flag-image").setAttribute("src", data.flags.svg);
-    // this.$("#native-name").textContent = data.nativeName;
-    // this.$("#population").textContent = new Intl.NumberFormat().format(parseInt(data.population));
-    // this.$("#region").textContent = data.region;
-    // this.$("#sub-region").textContent = data.subregion;
-    // this.$("#capital").textContent = data.capital;
-    // this.$("#tld").textContent = data.topLevelDomain.join();
-    // this.$("#currencies").textContent = data.currencies.map(c => c.name).join();
-    // this.$("#languages").textContent = data.languages.map(l => l.name).join();
-
-    // const bordersLinks = this.$("#borders-links");
-    // data.borders.forEach(b => {
-    //     const link = document.createElement("a", { is: "route-link" });
-    //     link.setAttribute("href", `detail-page?code=${b}`);
-    //     link.textContent = b;
-    //     bordersLinks.appendChild(link);
-    // });
-
 }
