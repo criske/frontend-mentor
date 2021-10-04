@@ -20,6 +20,14 @@ export default class State {
     }
 
     entries(entries) {
+        const weights = {
+            'guru': 5,
+            'advanced': 4,
+            'intermediary': 3,
+            'junior': 2,
+            'newbie': 1
+        };
+        entries.sort((curr, next) => weights[next.level.toLowerCase()] - weights[curr.level.toLowerCase()]);
         this.#update(Actions.ENTRIES, { entries });
         if (entries.length > 0) {
             this.select(0);
