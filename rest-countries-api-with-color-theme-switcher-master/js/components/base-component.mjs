@@ -9,13 +9,28 @@ export default class BaseComponent extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+        if (!this.constructor.pendingQueue) {
+            //init q for this component subclass-type
+            //ex if Foo extends BaseComponent this q will be for Foo instances only;
+            this.constructor.pendingQueue = new Queue();
+        }
         if (!this.constructor.cachedTemplate) {
-            this.createTemplateCache().then(content => {
-                this.constructor.cachedTemplate = content;
-                if (this.connected) {
-                    this.#readyToRender(content);
-                }
-            });
+            // while fetching the template add to pending q the created sub class type instances;
+            this.constructor.pendingQueue.offer(this);
+            if (!this.constructor.cachedTemplatePending) {
+                this.constructor.cachedTemplatePending = true; // flag to notify that template fetching is ongoing;
+                (async () => {
+                    let content = await this.createTemplateCache();
+                    this.constructor.cachedTemplate = content;
+                    //template is ready and add it to components from q and then discard them.
+                    while (!this.constructor.pendingQueue.isEmpty) {
+                        const component = this.constructor.pendingQueue.poll();
+                        if (component.connected) {
+                            component.#readyToRender(content);
+                        }
+                    }
+                })();
+            }
         }
     }
 
@@ -31,7 +46,7 @@ export default class BaseComponent extends HTMLElement {
         return this.connected && this.constructor.cachedTemplate;
     }
 
-    #readyToRender(content){
+    #readyToRender(content) {
         const { shadowRoot } = this;
         const template = document.createElement('template');
         template.innerHTML = content;
@@ -87,4 +102,29 @@ export default class BaseComponent extends HTMLElement {
         }
         return content;
     }
+}
+
+class Queue {
+    #elements = [];
+
+    offer(element) {
+        this.#elements.push(element);
+    }
+
+    peek() {
+        return this.#elements[0];
+    }
+
+    poll() {
+        return this.#elements.shift();
+    }
+
+    get isEmpty() {
+        return this.#elements.length == 0;
+    }
+
+    get length() {
+        return this.#elements.length;
+    }
+
 }
