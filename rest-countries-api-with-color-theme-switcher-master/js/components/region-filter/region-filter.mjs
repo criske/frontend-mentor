@@ -3,6 +3,9 @@ import StateAwareComponent from "../state-context/state-aware-component.mjs";
 
 export default class RegionFilter extends StateAwareComponent {
 
+    #region = [];
+
+    #filter = ''
 
     render() {
         this.#filterData(this.$('#filter').value);
@@ -23,7 +26,9 @@ export default class RegionFilter extends StateAwareComponent {
         }else{
             apiCall = window.countriesAPI.continent(value);
         }
+        this.#filter = value;
         apiCall.then(data => {
+            this.#region = data;
             this.shadowRoot.dispatchEvent(new ActionEvent(
                 "filter",
                 data
@@ -34,6 +39,12 @@ export default class RegionFilter extends StateAwareComponent {
     onSafeStateChanged(state){
         if(state.mode === 'search'){
             this.$('#filter').value = "";
+        }else if(state.mode === 'clear-search'){
+            this.$('#filter').value = this.#filter;
+            this.shadowRoot.dispatchEvent(new ActionEvent(
+                "filter",
+                this.#region
+            ));
         }
     }
     

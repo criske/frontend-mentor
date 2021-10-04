@@ -34,6 +34,7 @@ export default class CountrySearch extends StateAwareComponent {
         clear.addEventListener('click', () => {
             search.value = "";
             clear.classList.add('hidden');
+            this.dispatchEvent(new ActionEvent("clear-search"));
         });
     }
 

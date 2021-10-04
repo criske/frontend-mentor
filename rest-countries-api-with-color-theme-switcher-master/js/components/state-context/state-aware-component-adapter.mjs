@@ -15,17 +15,17 @@ export default class StateAwareComponentAdapter {
         this.#tryOnStateChanged();
     }
 
-    onStateChanged(state) {
+    onStateChanged(current, previous) {
         if (this.#ready) {
-            this.#onSafeStateChanged(state);
+            this.#onSafeStateChanged(current, previous);
         } else {
-            this.#pendingState = state;
+            this.#pendingState = { current, previous};
         }
     }
 
     #tryOnStateChanged(){
         if(this.#pendingState){
-            this.#onSafeStateChanged(this.#pendingState);
+            this.#onSafeStateChanged(this.#pendingState.current, this.#pendingState.previous);
             this.#pendingState = null;
         }
     }
