@@ -23,7 +23,7 @@ export default class FlagImage extends BaseComponent {
     }
 
     attributeChangedCallback(name, oldValue, newValue) {
-        if (name === 'src') {
+        if (name === 'src' && this.rendered) {
             this.#setSrc(newValue);
         }
     }
