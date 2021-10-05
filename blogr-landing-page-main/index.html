@@ -2,33 +2,78 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- displays site properly based on user's device -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 
-  <title>Frontend Mentor | [Blogr]</title>
+    <title>Frontend Mentor | [Blogr]</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      font-size: 11px;
-      text-align: center;
-    }
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+        .attribution {
+            font-size: 11px;
+            text-align: center;
+        }
 
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
-  <link rel="stylesheet" href="https://fonts.google.com/specimen/Overpass?preview.text_type=custom">
-  <link rel="stylesheet" href="https://fonts.google.com/specimen/Ubuntu?preview.text_type=custom">
-  <link rel="stylesheet" href="/css/main.css" />
+        .attribution a {
+            color: hsl(228, 45%, 44%);
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@300;600&family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="./app.js"></script>
 </head>
 
 <body>
-  <header>
-    <div class="back">
+    <header>
+
+        <div class="menu">
+            <img class="logo" src="./images/logo.svg"></img>
+            <nav>
+                <div class="sub-menu">
+                    <a>Product</a>
+                    <div class="sub-menu-entries hidden">
+                        <a>Overview</a>
+                        <a>Pricing</a>
+                        <a>Marketplace</a>
+                        <a>Features</a>
+                        <a>Integrations</a>
+                        <a>Overview</a>
+                        <a>Pricing</a>
+                        <a>Marketplace</a>
+                        <a>Features</a>
+                        <a>Integrations</a>
+                    </div>
+                </div>
+                <div class="sub-menu">
+                    <a>Company</a>
+                    <div class="sub-menu-entries hidden">
+                        <a>About</a>
+                        <a>Team</a>
+                        <a>Blog</a>
+                        <a>Careers</a>
+                    </div>
+                </div>
+                <div class="sub-menu">
+                    <a>Connect</a>
+                    <div class="sub-menu-entries hidden">
+                        <a>Contact</a>
+                        <a>Newsletter</a>
+                        <a>LinkedIn</a>
+                    </div>
+                </div>
+                <hr>
+                <a href="#">Login</a>
+                <a href="#" class="button">Sign Up</a>
+            </nav>
+            <img class="hamburger-nav" id="menu-mobile" src="./images/icon-hamburger.svg"></img>
+        </div>
+            <!-- <div class="back">
       <nav>
         <div class="logo">Blogr</div>
         <div class="menu">
@@ -42,9 +87,9 @@
         <div class="nav-btn">Sign Up</div>
       </nav>
       <section class="title"></section>
-    </div>
-  </header>
-  Product
+    </div> -->
+    </header>
+    <!-- Product
 
   Overview
   Pricing
@@ -61,9 +106,7 @@
 
   Connect
 
-  Contact
-  Newsletter
-  LinkedIn
+
 
   Login
   Sign Up
@@ -124,7 +167,7 @@
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>.
     Coded by <a href="#">Your Name Here</a>.
-  </div>
+  </div> -->
 </body>
 
 </html>

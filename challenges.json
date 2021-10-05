@@ -8,7 +8,29 @@
     {
         "name": "Blogr Landing Page",
         "path": "./blogr-landing-page-main",
-        "level": "junior"
+        "level": "junior",
+        "design": {
+            "path": "/design",
+            "desktop": {
+                "size": {
+                    "width": 1440,
+                    "height": 3394
+                },
+                "states": [
+                    "/desktop-design.jpg",
+                    "/active-states.jpg"
+                ]
+            },
+            "mobile": {
+                "size": {
+                    "width": 768,
+                    "height": 9378
+                },
+                "states": [
+                    "/mobile-design.jpg"
+                ]
+            }
+        }
     },
     {
         "name": "Tip Calculator App",
