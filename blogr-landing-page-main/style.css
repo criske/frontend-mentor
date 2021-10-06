@@ -15,6 +15,9 @@
     --paddig-right: 10rem;
 
     --pop-shadow: 0px 5px 10px 1px rgba(0,0,0,0.26);
+
+    --font-ubuntu: 'Ubuntu', sans-serif;
+    --font-overpass: 'Overpass', sans-serif;
 }
 
 *,
@@ -28,8 +31,8 @@ body {
     width: 1440px;
     height: 3394px;
     background-color: var(--clr-white);
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 16px;
+    font-family: var(--font-ubuntu);
+    font-size: 1rem;
 }
 
 header {
@@ -41,12 +44,13 @@ header {
     color: var(--clr-white);
     padding-left: var(--padding-left);
     padding-right: var(--paddig-right);
-    padding-top: 3.6rem;
+    padding: 5.1%;
     font-size: 34px;
+    display: flex;
+    flex-direction: column;
 }
 
 .menu {
-    /* outline: 1px solid whitesmoke; */
     position: relative;
     width: 100%;
     display: flex;
@@ -112,19 +116,13 @@ nav > *:nth-child(4){
 nav > *.sub-menu::after {
     content: url('./images/icon-arrow-light.svg');
     margin-left: .4rem;
-    background-color: red;
-}
-
-nav > *.sub-menu:focus-within,
-nav > *.sub-menu:focus{
-    /* transform: rotate(180deg); */
-    background-color: yellowgreen;
 }
 
 .button {
-    color: #E26265;
+    cursor: pointer;
+    color: hsl(359, 69%, 64%);
     height: 3rem;
-    background-color: white;
+    background-color: hsl(0, 0%, 100%);
     width: 8.5rem;
     border-radius: 2rem;
     display: flex;
@@ -132,6 +130,12 @@ nav > *.sub-menu:focus{
     justify-content: center;
     opacity: unset;
     font-weight: 700;
+    font-size: 16px;
+}
+
+.button:hover {
+    background-color: hsla(0, 0%, 100%, 0.2);
+    color: white;
 }
 
 .button-outline {
@@ -140,16 +144,76 @@ nav > *.sub-menu:focus{
     color: white;
 }
 
-#menu-mobile {
+.button-outline:hover {
+    background-color: white;
+    color: hsl(359, 69%, 64%);
+}
+
+.hamburger-nav {
     display: none;
     margin-left: auto;
-    width: 4rem;
+    width: clamp(2rem, 3vw, 4rem);
+    height: clamp(2rem, 3vw, 4rem);
     cursor: pointer;
+    background: url('./images/icon-hamburger.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 .hidden {
     display: none;
 }
+
+hr {
+    visibility: hidden;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+#menu-mobile:checked + nav {
+    display: flex !important;
+}
+
+#menu-mobile:checked ~ .hamburger-nav {
+    background: url('./images/icon-close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+
+.title {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-basis: 100%;
+    text-align: center;
+}
+
+.title > h1 {
+    margin: 0;
+    margin-top: 11.5%;
+    font-weight: 600;
+    font-size: 3.8rem;
+    font-family: var(--font-overpass);
+}
+
+.title > p {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    opacity: .7;
+    font-weight: 300;
+}
+
+.title-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-top: 3rem;
+}
+
 
 @media screen and (max-width: 750px) {
     :root {
@@ -158,16 +222,14 @@ nav > *.sub-menu:focus{
     }
 
     body {
-        width: 750px;
+        width: 100%;
         height: 9378px;
     }
 
     header {
-        height: 12.8%;
+        height: 45rem;
         border-radius: 0 0 0 12.2rem;
         background-position: 38% 38%;
-        padding-top: 7rem;
-        padding-right: var(--padding-right);
     }
 
     .hamburger-nav {
@@ -175,17 +237,18 @@ nav > *.sub-menu:focus{
     }
 
     nav {
-        /* display: none; */
+        z-index: 999;
+        display: none;
         position: absolute;
         flex-direction: column;
         height: 30rem;
         top: 140%;
-        left: -10%;
+        margin: 0;
         width: 100%;
         padding: 1.5rem;
         background-color: white;
         box-shadow: var(--pop-shadow);
-        border-radius: 1rem;
+        border-radius: .7rem;
         align-items: center;
         overflow-y: scroll;
         /* justify-content: space-around; */
@@ -206,7 +269,7 @@ nav > *.sub-menu:focus{
     }
 
     .logo {
-        width: 10rem;
+        width: clamp(2rem, 25vw, 10rem);
     }
 
     .sub-menu {
@@ -233,14 +296,23 @@ nav > *.sub-menu:focus{
         width: 100%;
         border: 0;
         border-top: 1px solid lightgray;
-    }
-
-    #menu-mobile {
-        display: unset;
+        visibility: unset;
     }
 
     nav .button {
         background: linear-gradient(to right,	hsl(8, 100%, 71%), hsl(353, 100%, 62%));
         color: white;
+    }
+
+    .title {
+        margin-top: unset;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .title > h1 {
+        font-size: clamp(2.5rem, 5vw, 5rem);
+        margin: 0;
     }
 }
