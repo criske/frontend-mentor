@@ -162,5 +162,33 @@
         },
         "level": "advanced",
         "solution": "https://www.frontendmentor.io/solutions/native-web-components-U6yJUPSp8"
+    },
+    ,
+    {
+        "name": "Ecommerece Produce",
+        "path": "./ecommerce-product-page-main",
+        "design": {
+            "path": "/design",
+            "desktop": {
+                "size" : {
+                    "width": 1440,
+                    "height": 900
+                },
+                "states": [
+                    "/desktop-design.jpg"
+                ]
+            },
+            "mobile": {
+                "size" : {
+                    "width": 375,
+                    "height": 900
+                },
+                "states": [
+                    "/mobile-design.jpg"
+                ]
+            }
+
+        },
+        "level": "intermediate"
     }
 ]
